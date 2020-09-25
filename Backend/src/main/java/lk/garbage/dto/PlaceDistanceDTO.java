@@ -2,7 +2,7 @@ package lk.garbage.dto;
 
 import java.util.Objects;
 
-public class PlaceDistanceDTO {
+public class PlaceDistanceDTO implements Comparable<PlaceDistanceDTO> {
     private PlaceDTO placeFrom;
     private PlaceDTO placeTo;
     private double distance;
@@ -54,4 +54,15 @@ public class PlaceDistanceDTO {
         return false;
     }
 
+    @Override
+    public int compareTo(PlaceDistanceDTO o) {
+        System.out.println(this.getDistance() + "-" + o.getDistance() + "/" + (this.getDistance() < o.getDistance()));
+        if (this.getDistance() < o.getDistance()) {
+            return -1;
+        } else if (this.getDistance() > o.getDistance()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }

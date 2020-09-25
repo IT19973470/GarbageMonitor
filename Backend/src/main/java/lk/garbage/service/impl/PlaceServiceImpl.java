@@ -20,7 +20,7 @@ public class PlaceServiceImpl implements PlaceService {
     private PlaceDistanceRepository placeDistanceRepository;
 
     @Override
-    public List<PlaceDTO> getDistances() {
+    public List<PlaceDTO> getDistances(String enter) {
 
         //Get sensors
         List<SensorDTO> sensors = new ArrayList<>();
@@ -46,26 +46,38 @@ public class PlaceServiceImpl implements PlaceService {
 
         //Remove duplicate labels of places
         Set<String> placesInArea = new HashSet<>();
-
         for (PlaceDistance distance : distances) {
             placesInArea.add(distance.getPlaceFrom().getLabel());
             placesInArea.add(distance.getPlaceTo().getLabel());
         }
 
-        placesInArea.removeAll(sensorLabels);
+        placesInArea.removeAll(sensorLabels);//Get only not available sensors
 
-        distanceDTOS.removeAll(new ArrayList<>(placesInArea));
+        distanceDTOS.removeAll(new ArrayList<>(placesInArea));//Get available places
 
-        System.out.println(distanceDTOS);
+        List<PlaceDistanceDTO> shortestPath = new ArrayList<>();//The shortest path
 
-        for (int i = 0; i < sensors.size(); i++) {
+        int sensorsSize = sensors.size() - 1;
+
+        while (sensorsSize > 0) {
 
             ArrayList<PlaceDistanceDTO> placeDistanceDTOS = new ArrayList<>(distanceDTOS);
-            System.out.println(Collections.singletonList(sensors.get(i).getLabel()));
-            placeDistanceDTOS.retainAll(Collections.singletonList(sensors.get(i).getLabel()));
+            placeDistanceDTOS.retainAll(Collections.singletonList(enter));
 
-            
-            System.out.println(placeDistanceDTOS);
+            Collections.sort(placeDistanceDTOS);
+
+            shortestPath.add(placeDistanceDTOS.get(0));
+
+            distanceDTOS.removeAll(Collections.singletonList(enter));
+
+            if (placeDistanceDTOS.get(0).getPlaceFrom().getLabel().equals(enter)) {
+                enter = placeDistanceDTOS.get(0).getPlaceTo().getLabel();
+            } else if (placeDistanceDTOS.get(0).getPlaceTo().getLabel().equals(enter)) {
+                enter = placeDistanceDTOS.get(0).getPlaceFrom().getLabel();
+            }
+
+            sensorsSize--;
+            System.out.println(shortestPath);
         }
 
         return null;
