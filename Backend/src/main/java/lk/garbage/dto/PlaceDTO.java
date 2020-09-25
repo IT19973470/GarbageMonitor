@@ -1,9 +1,9 @@
 package lk.garbage.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lk.garbage.entity.Place;
 
-import java.util.Set;
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlaceDTO {
 
     private String label;

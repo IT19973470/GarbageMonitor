@@ -1,7 +1,8 @@
 package lk.garbage.dto;
 
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SensorDTO {
     private String location;
     private String label;

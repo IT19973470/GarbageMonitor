@@ -1,7 +1,8 @@
 package lk.garbage.dto;
 
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlaceDistanceDTO implements Comparable<PlaceDistanceDTO> {
     private PlaceDTO placeFrom;
     private PlaceDTO placeTo;
@@ -56,7 +57,6 @@ public class PlaceDistanceDTO implements Comparable<PlaceDistanceDTO> {
 
     @Override
     public int compareTo(PlaceDistanceDTO o) {
-        System.out.println(this.getDistance() + "-" + o.getDistance() + "/" + (this.getDistance() < o.getDistance()));
         if (this.getDistance() < o.getDistance()) {
             return -1;
         } else if (this.getDistance() > o.getDistance()) {

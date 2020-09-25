@@ -20,7 +20,9 @@ public class PlaceServiceImpl implements PlaceService {
     private PlaceDistanceRepository placeDistanceRepository;
 
     @Override
-    public List<PlaceDTO> getDistances(String enter) {
+    public List<PlaceDistanceDTO> getDistances(String enter) {
+
+        List<PlaceDistanceDTO> shortestPath = new ArrayList<>();//The shortest path
 
         //Get sensors
         List<SensorDTO> sensors = new ArrayList<>();
@@ -29,57 +31,58 @@ public class PlaceServiceImpl implements PlaceService {
         sensors.add(new SensorDTO("Colombo", "A3", 40, 7.180272, 79.88408));
         sensors.add(new SensorDTO("Colombo", "A4", 40, 7.180272, 79.88408));
 
-        //Get all places for the location
-        List<PlaceDistance> distances = placeDistanceRepository.getDistances("Galle");
-        List<PlaceDistanceDTO> distanceDTOS = new ArrayList<>();
-        for (PlaceDistance distance : distances) {
-            PlaceDTO placeFromDTO = new PlaceDTO(distance.getPlaceFrom());
-            PlaceDTO placeToDTO = new PlaceDTO(distance.getPlaceTo());
-            distanceDTOS.add(new PlaceDistanceDTO(placeFromDTO, placeToDTO, distance.getDistance()));
-        }
-
         //Filter only labels
         List<String> sensorLabels = new ArrayList<>();
         for (SensorDTO sensor : sensors) {
             sensorLabels.add(sensor.getLabel());
         }
 
-        //Remove duplicate labels of places
-        Set<String> placesInArea = new HashSet<>();
-        for (PlaceDistance distance : distances) {
-            placesInArea.add(distance.getPlaceFrom().getLabel());
-            placesInArea.add(distance.getPlaceTo().getLabel());
-        }
+        if (sensorLabels.contains(enter)) {
 
-        placesInArea.removeAll(sensorLabels);//Get only not available sensors
-
-        distanceDTOS.removeAll(new ArrayList<>(placesInArea));//Get available places
-
-        List<PlaceDistanceDTO> shortestPath = new ArrayList<>();//The shortest path
-
-        int sensorsSize = sensors.size() - 1;
-
-        while (sensorsSize > 0) {
-
-            ArrayList<PlaceDistanceDTO> placeDistanceDTOS = new ArrayList<>(distanceDTOS);
-            placeDistanceDTOS.retainAll(Collections.singletonList(enter));
-
-            Collections.sort(placeDistanceDTOS);
-
-            shortestPath.add(placeDistanceDTOS.get(0));
-
-            distanceDTOS.removeAll(Collections.singletonList(enter));
-
-            if (placeDistanceDTOS.get(0).getPlaceFrom().getLabel().equals(enter)) {
-                enter = placeDistanceDTOS.get(0).getPlaceTo().getLabel();
-            } else if (placeDistanceDTOS.get(0).getPlaceTo().getLabel().equals(enter)) {
-                enter = placeDistanceDTOS.get(0).getPlaceFrom().getLabel();
+            //Get all places for the location
+            List<PlaceDistance> distances = placeDistanceRepository.getDistances("Galle");
+            List<PlaceDistanceDTO> distanceDTOS = new ArrayList<>();
+            for (PlaceDistance distance : distances) {
+                PlaceDTO placeFromDTO = new PlaceDTO(distance.getPlaceFrom());
+                PlaceDTO placeToDTO = new PlaceDTO(distance.getPlaceTo());
+                distanceDTOS.add(new PlaceDistanceDTO(placeFromDTO, placeToDTO, distance.getDistance()));
             }
 
-            sensorsSize--;
-            System.out.println(shortestPath);
+            //Remove duplicate labels of places
+            Set<String> placesInArea = new HashSet<>();
+            for (PlaceDistance distance : distances) {
+                placesInArea.add(distance.getPlaceFrom().getLabel());
+                placesInArea.add(distance.getPlaceTo().getLabel());
+            }
+
+            placesInArea.removeAll(sensorLabels);//Get only not available sensors
+
+            distanceDTOS.removeAll(new ArrayList<>(placesInArea));//Get available places
+
+            int sensorsSize = sensors.size() - 1;
+
+            while (sensorsSize > 0) {
+
+                ArrayList<PlaceDistanceDTO> placeDistanceDTOS = new ArrayList<>(distanceDTOS);
+                placeDistanceDTOS.retainAll(Collections.singletonList(enter));
+
+                Collections.sort(placeDistanceDTOS);
+
+                shortestPath.add(placeDistanceDTOS.get(0));
+
+                distanceDTOS.removeAll(Collections.singletonList(enter));
+
+                if (placeDistanceDTOS.get(0).getPlaceFrom().getLabel().equals(enter)) {
+                    enter = placeDistanceDTOS.get(0).getPlaceTo().getLabel();
+                } else if (placeDistanceDTOS.get(0).getPlaceTo().getLabel().equals(enter)) {
+                    enter = placeDistanceDTOS.get(0).getPlaceFrom().getLabel();
+                }
+
+                sensorsSize--;
+                System.out.println(shortestPath);
+            }
         }
 
-        return null;
+        return shortestPath;
     }
 }

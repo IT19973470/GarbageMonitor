@@ -26,7 +26,7 @@
         <counts>
           <entry key="class" value="5" />
           <entry key="html" value="12" />
-          <entry key="java" value="60" />
+          <entry key="java" value="67" />
           <entry key="js" value="1" />
           <entry key="json" value="1" />
           <entry key="properties" value="1" />
@@ -39,7 +39,7 @@
         <counts>
           <entry key="CLASS" value="5" />
           <entry key="HTML" value="12" />
-          <entry key="JAVA" value="60" />
+          <entry key="JAVA" value="67" />
           <entry key="JSON" value="1" />
           <entry key="JavaScript" value="1" />
           <entry key="Properties" value="1" />
@@ -57,7 +57,7 @@
         <counts>
           <entry key="dummy" value="15" />
           <entry key="html" value="296" />
-          <entry key="java" value="2033" />
+          <entry key="java" value="2122" />
           <entry key="properties" value="14" />
           <entry key="scss" value="2" />
           <entry key="ts" value="272" />
@@ -67,7 +67,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="296" />
-          <entry key="JAVA" value="2033" />
+          <entry key="JAVA" value="2122" />
           <entry key="PLAIN_TEXT" value="15" />
           <entry key="Properties" value="14" />
           <entry key="SCSS" value="2" />
@@ -82,8 +82,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/impl/PlaceServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="61" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="-154">
+              <caret line="16" column="48" lean-forward="true" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -149,12 +149,12 @@
         <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/entity/Place.java" />
         <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/repository/PlaceRepository.java" />
         <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/repository/PlaceDistanceRepository.java" />
+        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/PlaceDistanceDTO.java" />
         <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/PlaceDTO.java" />
         <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/SensorDTO.java" />
-        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/controller/PlaceController.java" />
-        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/PlaceService.java" />
-        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/PlaceDistanceDTO.java" />
         <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/impl/PlaceServiceImpl.java" />
+        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/PlaceService.java" />
+        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/controller/PlaceController.java" />
       </list>
     </option>
   </component>
@@ -366,7 +366,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1601059221995" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1601061257972" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -438,18 +438,18 @@
       <workItem from="1600593918516" duration="18842000" />
       <workItem from="1600787970464" duration="1869000" />
       <workItem from="1600848099866" duration="178000" />
-      <workItem from="1600944659425" duration="34224000" />
+      <workItem from="1600944659425" duration="36202000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62166000" />
+    <option name="totallyTimeSpent" value="64144000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15369128" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15369128" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -472,7 +472,7 @@
       <window_info anchor="bottom" id="Spring" order="12" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.32907802" />
-      <window_info active="true" anchor="bottom" id="Run Dashboard" order="15" visible="true" weight="0.61843973" />
+      <window_info anchor="bottom" id="Run Dashboard" order="15" visible="true" weight="0.35744682" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -490,18 +490,6 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/impl/PlaceServiceImpl.java</url>
-          <line>79</line>
-          <properties />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/login/login.page.ts">
@@ -757,16 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/PlaceDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="74" column="18" selection-start-line="74" selection-start-column="18" selection-end-line="74" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_51/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
@@ -778,36 +756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="282" column="22" selection-start-line="282" selection-start-column="22" selection-end-line="282" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/SensorDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
-          <folding>
-            <element signature="e#1166#1167#0" expanded="true" />
-            <element signature="e#1208#1209#0" expanded="true" />
-            <element signature="e#1254#1255#0" expanded="true" />
-            <element signature="e#1282#1283#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/controller/PlaceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/PlaceService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -828,17 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/PlaceDistanceDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="e#462#463#0" expanded="true" />
-            <element signature="e#504#505#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.6.RELEASE/spring-web-5.1.6.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -846,10 +783,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/PlaceDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/SensorDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/PlaceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/PlaceDistanceDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/controller/PlaceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/impl/PlaceServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        <state relative-caret-position="-154">
+          <caret line="16" column="48" lean-forward="true" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
