@@ -1,6 +1,5 @@
 package lk.garbage.controller;
 
-import lk.garbage.dto.PlaceDTO;
 import lk.garbage.dto.PlaceDistanceDTO;
 import lk.garbage.service.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +15,9 @@ public class PlaceController {
     @Autowired
     private PlaceService placeService;
 
-    @GetMapping(value = "/getDistances/{enter}")
-    public List<PlaceDistanceDTO> getDistances(@PathVariable String enter) {
-        return placeService.getDistances(enter);
+    @GetMapping(value = "/getShortestPath/{enter}")
+    public List<PlaceDistanceDTO> getShortestPath(@PathVariable String enter) {
+        return placeService.getShortestPath(enter);
     }
 
 }

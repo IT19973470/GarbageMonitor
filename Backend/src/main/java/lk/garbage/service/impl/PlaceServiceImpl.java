@@ -20,7 +20,7 @@ public class PlaceServiceImpl implements PlaceService {
     private PlaceDistanceRepository placeDistanceRepository;
 
     @Override
-    public List<PlaceDistanceDTO> getDistances(String enter) {
+    public List<PlaceDistanceDTO> getShortestPath(String enter) {
 
         List<PlaceDistanceDTO> shortestPath = new ArrayList<>();//The shortest path
 
@@ -40,7 +40,7 @@ public class PlaceServiceImpl implements PlaceService {
         if (sensorLabels.contains(enter)) {
 
             //Get all places for the location
-            List<PlaceDistance> distances = placeDistanceRepository.getDistances("Galle");
+            List<PlaceDistance> distances = placeDistanceRepository.getDistances("Colombo");
             List<PlaceDistanceDTO> distanceDTOS = new ArrayList<>();
             for (PlaceDistance distance : distances) {
                 PlaceDTO placeFromDTO = new PlaceDTO(distance.getPlaceFrom());

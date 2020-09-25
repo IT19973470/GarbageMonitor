@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface PlaceService {
 
-    List<PlaceDistanceDTO> getDistances(String enter);
+    List<PlaceDistanceDTO> getShortestPath(String enter);
 }
