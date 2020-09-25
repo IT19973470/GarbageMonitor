@@ -12,14 +12,16 @@ public class PlaceDistance {
     private PlaceDistancePK id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "placeFromId", insertable = false, updatable = false, nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Place placeFrom;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "placeToId", insertable = false, updatable = false, nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Place placeTo;
+
+    private double distance;
 
     public PlaceDistancePK getId() {
         return id;
@@ -45,12 +47,21 @@ public class PlaceDistance {
         this.placeTo = placeTo;
     }
 
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
     @Override
     public String toString() {
         return "PlaceDistance{" +
                 "id=" + id +
                 ", placeFrom=" + placeFrom +
                 ", placeTo=" + placeTo +
+                ", distance=" + distance +
                 '}';
     }
 }

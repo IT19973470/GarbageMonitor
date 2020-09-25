@@ -6,30 +6,30 @@ import java.io.Serializable;
 @Embeddable
 public class PlaceDistancePK implements Serializable {
 
-    private String placeFrom;
-    private String placeTo;
+    private String placeFromId;
+    private String placeToId;
 
-    public String getPlaceFrom() {
-        return placeFrom;
+    public String getPlaceFromId() {
+        return placeFromId;
     }
 
-    public void setPlaceFrom(String placeFrom) {
-        this.placeFrom = placeFrom;
+    public void setPlaceFromId(String placeFromId) {
+        this.placeFromId = placeFromId;
     }
 
-    public String getPlaceTo() {
-        return placeTo;
+    public String getPlaceToId() {
+        return placeToId;
     }
 
-    public void setPlaceTo(String placeTo) {
-        this.placeTo = placeTo;
+    public void setPlaceToId(String placeToId) {
+        this.placeToId = placeToId;
     }
 
     @Override
     public String toString() {
         return "PlaceDistancePK{" +
-                "placeFrom='" + placeFrom + '\'' +
-                ", placeTo='" + placeTo + '\'' +
+                "placeFromId='" + placeFromId + '\'' +
+                ", placeToId='" + placeToId + '\'' +
                 '}';
     }
 }

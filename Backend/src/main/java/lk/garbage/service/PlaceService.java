@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface PlaceService {
 
-    List<PlaceDTO> getPlaces();
+    List<PlaceDTO> getDistances();
 }

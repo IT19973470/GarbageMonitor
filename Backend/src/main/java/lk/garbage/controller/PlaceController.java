@@ -15,9 +15,9 @@ public class PlaceController {
     @Autowired
     private PlaceService placeService;
 
-    @GetMapping(value = "/getPlaces")
-    public List<PlaceDTO> getPlaces() {
-        return placeService.getPlaces();
+    @GetMapping(value = "/getDistances")
+    public List<PlaceDTO> getDistances() {
+        return placeService.getDistances();
     }
 
 }

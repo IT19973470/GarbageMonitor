@@ -1,22 +1,34 @@
 package lk.garbage.dto;
 
+import lk.garbage.entity.Place;
+
 import java.util.Set;
 
 public class PlaceDTO {
 
+    private String label;
     private String location;
-    private char label;
-    private double weight;
     private double latitude;
     private double longitude;
+    private String mainLocation;
     private PlaceDTO placeNext;
 
-    public PlaceDTO(String location, char label, double weight, double latitude, double longitude) {
-        this.location = location;
+    public PlaceDTO(Place place) {
+        if (place != null) {
+            this.label = place.getLabel();
+            this.location = place.getLocation();
+            this.latitude = place.getLatitude();
+            this.longitude = place.getLongitude();
+            this.mainLocation = place.getMainLocation();
+        }
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
         this.label = label;
-        this.weight = weight;
-        this.latitude = latitude;
-        this.longitude = longitude;
     }
 
     public String getLocation() {
@@ -25,14 +37,6 @@ public class PlaceDTO {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
     }
 
     public double getLatitude() {
@@ -51,12 +55,12 @@ public class PlaceDTO {
         this.longitude = longitude;
     }
 
-    public char getLabel() {
-        return label;
+    public String getMainLocation() {
+        return mainLocation;
     }
 
-    public void setLabel(char label) {
-        this.label = label;
+    public void setMainLocation(String mainLocation) {
+        this.mainLocation = mainLocation;
     }
 
     public PlaceDTO getPlaceNext() {
@@ -65,5 +69,17 @@ public class PlaceDTO {
 
     public void setPlaceNext(PlaceDTO placeNext) {
         this.placeNext = placeNext;
+    }
+
+    @Override
+    public String toString() {
+        return "PlaceDTO{" +
+                "label='" + label + '\'' +
+                ", location='" + location + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", mainLocation='" + mainLocation + '\'' +
+                ", placeNext=" + placeNext +
+                '}';
     }
 }
