@@ -57,7 +57,7 @@ public class PlaceServiceImpl implements PlaceService {
 
             placesInArea.removeAll(sensorLabels);//Get only not available sensors
 
-            distanceDTOS.removeAll(new ArrayList<>(placesInArea));//Get available places
+            distanceDTOS.removeAll(Collections.singletonList(placesInArea));//Get available places
 
             int sensorsSize = sensors.size() - 1;
 
