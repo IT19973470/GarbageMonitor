@@ -26,10 +26,10 @@ public class PlaceServiceImpl implements PlaceService {
 
         //Get sensors
         List<SensorDTO> sensors = new ArrayList<>();
-        sensors.add(new SensorDTO("Galle", "A1", 50, 6.053518500000001, 80.22097729999996));
-        sensors.add(new SensorDTO("Colombo", "A2", 40, 7.180272, 79.88408));
-        sensors.add(new SensorDTO("Colombo", "A3", 40, 7.180272, 79.88408));
-        sensors.add(new SensorDTO("Colombo", "A4", 40, 7.180272, 79.88408));
+        sensors.add(new SensorDTO("A1", 50));
+        sensors.add(new SensorDTO("A2", 40));
+        sensors.add(new SensorDTO("A3", 40));
+        sensors.add(new SensorDTO("A4", 40));
 
         //Filter only labels
         List<String> sensorLabels = new ArrayList<>();
