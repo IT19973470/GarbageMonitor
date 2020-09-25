@@ -1,10 +1,15 @@
 package lk.garbage.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Set;
 
+@Entity
 public class Place {
+
+    @Id
+    private String label;
     private String location;
-    private char label;
     private double latitude;
     private double longitude;
     private Set<PlaceDistance> placeDistances;
@@ -17,11 +22,11 @@ public class Place {
         this.location = location;
     }
 
-    public char getLabel() {
+    public String getLabel() {
         return label;
     }
 
-    public void setLabel(char label) {
+    public void setLabel(String label) {
         this.label = label;
     }
 
@@ -47,5 +52,15 @@ public class Place {
 
     public void setPlaceDistances(Set<PlaceDistance> placeDistances) {
         this.placeDistances = placeDistances;
+    }
+
+    @Override
+    public String toString() {
+        return "Place{" +
+                "label='" + label + '\'' +
+                ", location='" + location + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
     }
 }
