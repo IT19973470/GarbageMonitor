@@ -1,0 +1,57 @@
+<ion-content>
+
+  <form #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && onSubmit()" novalidate>
+    <div class="row" style="padding: 25px;margin-top: 40px">
+      <div class="col-12"
+           style="text-align: center;color: #049eac;font-size: 35px;font-weight: bold;margin-top: 40px">
+        Garbage Monitor
+      </div>
+      <div class="col-12" style="margin-top: 60px">
+        <input type="text" class="form-control" placeholder="NIC"
+               [(ngModel)]="member.nic" #nic="ngModel" appEmailOrNicValidator name="nic" required
+               [ngStyle]="{'border-color':logged?'#c0ccda':'#b60f06'}">
+        <div *ngIf="(nic.touched || loginForm.submitted) && nic.errors?.required"
+             style="margin-left: 5px;color: #b60f06;font-size: 11px">
+          NIC is required
+        </div>
+        <div *ngIf="(nic.dirty) && nic.errors?.emailOrNicInvalid"
+             style="margin-left: 5px;color: #b60f06;font-size: 11px">
+          Invalid NIC
+        </div>
+        <div style="margin-left: 5px;color: #b60f06;font-size: 11px">
+          {{userNameMsg}}
+        </div>
+      </div>
+
+      <div class="col-12" style="margin-top: 15px">
+        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="member.password"
+               #password="ngModel" name="password" required
+               [ngStyle]="{'border-color':logged?'#c0ccda':'#b60f06'}">
+        <div *ngIf="(password.touched || loginForm.submitted) && password.errors?.required"
+             style="margin-left: 5px;color: #b60f06;font-size: 11px">
+          Password is required
+        </div>
+        <div style="margin-left: 5px;color: #b60f06;font-size: 11px">
+          {{passwordMsg}}
+        </div>
+      </div>
+      <div class="col-12"
+           [ngStyle]="{'color': logged?'#026a74':'#b60f06'}"
+           style="margin-top: 5px;padding-right: 15px;font-size: 11px;color: #026a74;text-align: right">
+        Forgot Password?
+      </div>
+      <div class="col-12" style="margin-top: 40px;text-align: right">
+        <button type="submit" class="btn btn-secondary"
+                [ngStyle]="{'background-color': logged?'#026a74':'#b60f06','border-color':logged?'#026a74':'#b60f06'}"
+                style="font-weight: bold;width: 120px;background-color:#026a74">
+          {{logged?'Sign In':'Sign In Again'}}
+        </button>
+      </div>
+      <!--<div *ngIf="logged" class="col-12"-->
+      <!--style="margin-top: 70px;text-align: center;font-size: 12px">-->
+      <!--<span style="color: #db1207;border: 2px solid #db1207;border-radius: 30px;padding: 20px;font-weight: bold">Login failed</span>-->
+      <!--</div>-->
+    </div>
+  </form>
+
+</ion-content>
