@@ -1,5 +1,6 @@
 package lk.garbage.service.impl;
 
+import lk.garbage.dto.BestPathDTO;
 import lk.garbage.dto.PlaceDTO;
 import lk.garbage.dto.PlaceDistanceDTO;
 import lk.garbage.dto.SensorDTO;
@@ -20,9 +21,7 @@ public class PlaceServiceImpl implements PlaceService {
     private List<PlaceDistanceDTO> placeDistanceDTOS;
 
     @Override
-    public List<PlaceDistanceDTO> getShortestPath(String enter) {
-
-        List<PlaceDistanceDTO> shortestPath = new ArrayList<>();//The shortest path
+    public BestPathDTO getShortestPath(String enter) {
 
         //==============================================================================================================
 
@@ -117,7 +116,7 @@ public class PlaceServiceImpl implements PlaceService {
         //==============================================================================================================
 
         //Get the shortest distance
-        PathDTO lowestPath = pathDTOS.get(0);
+        PlaceServiceImpl.PathDTO lowestPath = pathDTOS.get(0);
         for (int i = 1; i < pathDTOS.size(); i++) {
             if (pathDTOS.get(i).distance < lowestPath.distance) {
                 lowestPath = pathDTOS.get(i);
@@ -127,7 +126,15 @@ public class PlaceServiceImpl implements PlaceService {
         System.out.println(pathDTOS);
         System.out.println(lowestPath);
 
-        return shortestPath;
+        BestPathDTO bestPathDTO = new BestPathDTO();
+        List<PlaceDistanceDTO> placeDistanceDTOS = new ArrayList<>();
+        for (int i = 0; i < lowestPath.path.length - 1; i++) {
+            placeDistanceDTOS.add(getPlaceDistanceDTO(lowestPath.path[i], lowestPath.path[i + 1]));
+        }
+        bestPathDTO.setPlaceDistances(placeDistanceDTOS);
+        bestPathDTO.setDistance(lowestPath.distance);
+
+        return bestPathDTO;
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -160,6 +167,22 @@ public class PlaceServiceImpl implements PlaceService {
             }
         }
         return distance;
+    }
+
+    private PlaceDistanceDTO getPlaceDistanceDTO(String v1, String v2) {
+        for (int i = 0; i < placeDistanceDTOS.size(); i++) {
+            if (placeDistanceDTOS.get(i).getPlaceFrom().getLabel().equals(v1) && placeDistanceDTOS.get(i).getPlaceTo().getLabel().equals(v2)) {
+                return placeDistanceDTOS.get(i);
+            }
+
+            if (placeDistanceDTOS.get(i).getPlaceFrom().getLabel().equals(v2) && placeDistanceDTOS.get(i).getPlaceTo().getLabel().equals(v1)) {
+                PlaceDTO placeDTOTemp = placeDistanceDTOS.get(i).getPlaceFrom();
+                placeDistanceDTOS.get(i).setPlaceFrom(placeDistanceDTOS.get(i).getPlaceTo());
+                placeDistanceDTOS.get(i).setPlaceTo(placeDTOTemp);
+                return placeDistanceDTOS.get(i);
+            }
+        }
+        return null;
     }
 
     //------------------------------------------------------------------------------------------------------------------
