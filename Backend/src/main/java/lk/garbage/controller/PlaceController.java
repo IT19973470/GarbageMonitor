@@ -16,8 +16,13 @@ public class PlaceController {
     private PlaceService placeService;
 
     @GetMapping(value = "/getShortestPath/{enter}")
-    public List<PlaceDistanceDTO> getShortestPath(@PathVariable String enter) {
+    public List<PlaceDistanceDTO> getShortestPathWithEntrance(@PathVariable String enter) {
         return placeService.getShortestPath(enter);
+    }
+
+    @GetMapping(value = "/getShortestPath")
+    public List<PlaceDistanceDTO> getShortestPath() {
+        return placeService.getShortestPath("No");
     }
 
 }

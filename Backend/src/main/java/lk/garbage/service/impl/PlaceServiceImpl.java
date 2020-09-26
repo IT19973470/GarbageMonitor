@@ -24,7 +24,7 @@ public class PlaceServiceImpl implements PlaceService {
 
         List<PlaceDistanceDTO> shortestPath = new ArrayList<>();//The shortest path
 
-        //==========================================================================================================
+        //==============================================================================================================
 
         //Get sensors
         List<SensorDTO> sensors = new ArrayList<>();
@@ -34,7 +34,7 @@ public class PlaceServiceImpl implements PlaceService {
         sensors.add(new SensorDTO("A4", 40));
         sensors.add(new SensorDTO("A5", 60));
 
-        //==========================================================================================================
+        //==============================================================================================================
 
         //Filter only labels of sensors
         List<String> sensorLabels = new ArrayList<>();
@@ -42,66 +42,95 @@ public class PlaceServiceImpl implements PlaceService {
             sensorLabels.add(sensor.getLabel());
         }
 
-        if (sensorLabels.contains(enter)) {
+        //==============================================================================================================
 
-
-            //==========================================================================================================
-
-            //Get all places for the location(Hibernate)
-            List<PlaceDistance> distances = placeDistanceRepository.getDistances("Colombo");
-            placeDistanceDTOS = new ArrayList<>();
-            for (PlaceDistance distance : distances) {
-                PlaceDTO placeFromDTO = new PlaceDTO(distance.getPlaceFrom());
-                PlaceDTO placeToDTO = new PlaceDTO(distance.getPlaceTo());
-                placeDistanceDTOS.add(new PlaceDistanceDTO(placeFromDTO, placeToDTO, distance.getDistance()));
-            }
-
-            //==========================================================================================================
-
-            //Remove duplicate labels of places
-            Set<String> placesInArea = new HashSet<>();
-            for (PlaceDistance distance : distances) {
-                placesInArea.add(distance.getPlaceFrom().getLabel());
-                placesInArea.add(distance.getPlaceTo().getLabel());
-            }
-
-            placesInArea.removeAll(sensorLabels);//Get only not available sensors
-            placeDistanceDTOS.removeAll(Collections.singletonList(placesInArea));//Get available places
-
-            //==========================================================================================================
-
-            //Get all possible paths
-            int factorial = getFactorial(sensorLabels.size());
-
-            String[][] possiblePaths = new String[factorial][];
-            possiblePaths[0] = sensorLabels.toArray(new String[sensorLabels.size()]);
-            int count = 1;
-            int len;
-            for (int i = 0; i < sensorLabels.size(); i++) {
-                len = count;
-                for (int k = 0; k < len; k++) {
-                    for (int j = i + 1; j < sensorLabels.size(); j++) {
-                        possiblePaths[count++] = swapValues(possiblePaths[k], i, j);
-                    }
-                }
-            }
-
-            //==========================================================================================================
-
-            List<PlaceServiceImpl.PathDTO> pathDTOS = new ArrayList<>();
-            for (int i = 0; i < possiblePaths.length; i++) {
-                double totalDistance = 0;
-                for (int j = 0; j < possiblePaths[i].length - 1; j++) {
-                    totalDistance += getDistance(possiblePaths[i][j], possiblePaths[i][j + 1]);
-                }
-                pathDTOS.add(new PathDTO(possiblePaths[i], totalDistance));
-            }
-
-            System.out.println(pathDTOS);
+        //Get all places for the location(Hibernate)
+        List<PlaceDistance> distances = placeDistanceRepository.getDistances("Colombo");
+        placeDistanceDTOS = new ArrayList<>();
+        for (PlaceDistance distance : distances) {
+            PlaceDTO placeFromDTO = new PlaceDTO(distance.getPlaceFrom());
+            PlaceDTO placeToDTO = new PlaceDTO(distance.getPlaceTo());
+            placeDistanceDTOS.add(new PlaceDistanceDTO(placeFromDTO, placeToDTO, distance.getDistance()));
         }
+
+        //==============================================================================================================
+
+        //Remove duplicate labels of labels(Hibernate)
+        Set<String> placesInArea = new HashSet<>();
+        for (PlaceDistance distance : distances) {
+            placesInArea.add(distance.getPlaceFrom().getLabel());
+            placesInArea.add(distance.getPlaceTo().getLabel());
+        }
+
+        placesInArea.removeAll(sensorLabels);//Get only not available sensors(Hibernate)
+        placeDistanceDTOS.removeAll(Collections.singletonList(placesInArea));//Get available places(Hibernate)(Clean)
+
+        //==============================================================================================================
+
+        //Temporary remove entrance
+        boolean sensorRemovedTemp = false;
+        if (sensorLabels.contains(enter)) {
+            sensorRemovedTemp = sensorLabels.removeAll(Collections.singletonList(enter));
+        }
+
+        //Get all possible paths
+        int factorial = getFactorial(sensorLabels.size());
+
+        String[][] possiblePaths = new String[factorial][];
+        possiblePaths[0] = sensorLabels.toArray(new String[sensorLabels.size()]);
+        int count = 1;
+        int len;
+        for (int i = 0; i < sensorLabels.size(); i++) {
+            len = count;
+            for (int k = 0; k < len; k++) {
+                for (int j = i + 1; j < sensorLabels.size(); j++) {
+                    possiblePaths[count++] = swapValues(possiblePaths[k], i, j);
+                }
+            }
+        }
+
+        //Re add the entrance for paths
+        if (sensorRemovedTemp) {
+            String tempArr[];
+            for (int i = 0; i < possiblePaths.length; i++) {
+                tempArr = possiblePaths[i].clone();
+                possiblePaths[i] = new String[sensorLabels.size() + 1];
+                possiblePaths[i][0] = enter;
+                for (int j = 0; j < tempArr.length; j++) {
+                    possiblePaths[i][j + 1] = tempArr[j];
+                }
+            }
+        }
+
+        //==============================================================================================================
+
+        //Get distance for all possible paths
+        List<PlaceServiceImpl.PathDTO> pathDTOS = new ArrayList<>();
+        for (int i = 0; i < possiblePaths.length; i++) {
+            double totalDistance = 0;
+            for (int j = 0; j < possiblePaths[i].length - 1; j++) {
+                totalDistance += getDistance(possiblePaths[i][j], possiblePaths[i][j + 1]);
+            }
+            pathDTOS.add(new PathDTO(possiblePaths[i], totalDistance));
+        }
+
+        //==============================================================================================================
+
+        //Get the shortest distance
+        PathDTO lowestPath = pathDTOS.get(0);
+        for (int i = 1; i < pathDTOS.size(); i++) {
+            if (pathDTOS.get(i).distance < lowestPath.distance) {
+                lowestPath = pathDTOS.get(i);
+            }
+        }
+
+        System.out.println(pathDTOS);
+        System.out.println(lowestPath);
 
         return shortestPath;
     }
+
+    //------------------------------------------------------------------------------------------------------------------
 
     private String[] swapValues(String[] arr, int v1, int v2) {
         String[] newArr = arr.clone();
@@ -111,6 +140,8 @@ public class PlaceServiceImpl implements PlaceService {
         return newArr;
     }
 
+    //------------------------------------------------------------------------------------------------------------------
+
     private int getFactorial(int val) {
         int factorial = 1;
         for (int i = val; i > 1; i--) {
@@ -118,6 +149,8 @@ public class PlaceServiceImpl implements PlaceService {
         }
         return factorial;
     }
+
+    //------------------------------------------------------------------------------------------------------------------
 
     private double getDistance(String v1, String v2) {
         double distance = 0;
@@ -129,11 +162,13 @@ public class PlaceServiceImpl implements PlaceService {
         return distance;
     }
 
+    //------------------------------------------------------------------------------------------------------------------
+
     private class PathDTO {
         String[] path;
         double distance;
 
-        public PathDTO(String[] path, double distance) {
+        private PathDTO(String[] path, double distance) {
             this.path = path;
             this.distance = distance;
         }
