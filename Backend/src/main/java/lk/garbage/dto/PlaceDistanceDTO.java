@@ -8,6 +8,9 @@ public class PlaceDistanceDTO implements Comparable<PlaceDistanceDTO> {
     private PlaceDTO placeTo;
     private double distance;
 
+    public PlaceDistanceDTO() {
+    }
+
     public PlaceDistanceDTO(PlaceDTO placeFrom, PlaceDTO placeTo, double distance) {
         this.placeFrom = placeFrom;
         this.placeTo = placeTo;
