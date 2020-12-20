@@ -21,6 +21,7 @@ export class RoadmapPage implements OnInit {
     // placeLatLong: Array<number> = new Array<number>();
     // @Output() googleMapRoutesOut: EventEmitter<any> = new EventEmitter();
     places = Array();
+    totalTrip = 0;
     pointer = 0;
 
     constructor(
@@ -40,6 +41,8 @@ export class RoadmapPage implements OnInit {
         });
 
         this.http.get<any>(environment.backend_url + "/api/place/getShortestPath").subscribe((placeDto) => {
+            // console.log(placeDto)
+            this.totalTrip = placeDto.distance;
             for (let i = 0; i < placeDto['placeDistances'].length; i++) {
                 // this.marker1 = new google.maps.Marker({
                 //     position: new google.maps.LatLng(placeDtos[i].latitude, placeDtos[i].longitude),
