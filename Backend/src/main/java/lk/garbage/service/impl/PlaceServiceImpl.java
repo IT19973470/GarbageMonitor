@@ -264,16 +264,16 @@ public class PlaceServiceImpl implements PlaceService {
 //
 //        //==============================================================================================================
 //
-//        //Get the shortest distance
-//        PlaceServiceImpl.PathDTO lowestPath = pathDTOS.get(0);
-//        for (int i = 1; i < pathDTOS.size(); i++) {
-//            if (pathDTOS.get(i).distance < lowestPath.distance) {
-//                lowestPath = pathDTOS.get(i);
-//            }
-//        }
-//
-//        System.out.println(pathDTOS);
-//        System.out.println(lowestPath);
+        //Get the shortest distance
+        PlaceServiceImpl.PathDTO lowestPath = pathDTOS.get(0);
+        for (int i = 1; i < pathDTOS.size(); i++) {
+            if (pathDTOS.get(i).distance < lowestPath.distance) {
+                lowestPath = pathDTOS.get(i);
+            }
+        }
+
+        System.out.println(pathDTOS);
+        System.out.println(lowestPath);
     }
 }
 
