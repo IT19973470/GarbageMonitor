@@ -21,6 +21,7 @@ export class RoadmapPage implements OnInit {
     // placeLatLong: Array<number> = new Array<number>();
     // @Output() googleMapRoutesOut: EventEmitter<any> = new EventEmitter();
     places = Array();
+    pointer = 0;
 
     constructor(
         private http: HttpClient
@@ -38,15 +39,34 @@ export class RoadmapPage implements OnInit {
             // mapTypeId: 'terrain'
         });
 
-        this.http.get<Array<PlaceDto>>(environment.backend_url + "/api/place/getPlaces").subscribe((placeDtos) => {
-            for (let i = 0; i < placeDtos.length; i++) {
-                this.marker1 = new google.maps.Marker({
-                    position: new google.maps.LatLng(placeDtos[i].latitude, placeDtos[i].longitude),
-                    map: this.map,
-                    label: placeDtos[i].label
-                });
-                this.places.push(placeDtos[i])
+        this.http.get<any>(environment.backend_url + "/api/place/getShortestPath").subscribe((placeDto) => {
+            for (let i = 0; i < placeDto['placeDistances'].length; i++) {
+                // this.marker1 = new google.maps.Marker({
+                //     position: new google.maps.LatLng(placeDtos[i].latitude, placeDtos[i].longitude),
+                //     map: this.map,
+                //     label: placeDtos[i].label
+                // });
+
+                this.places.push(placeDto['placeDistances'][i])
+                if (i === placeDto['placeDistances'].length - 1) {
+                    this.places.push({
+                        placeFrom: {
+                            label: placeDto['placeDistances'][i].placeTo.label,
+                            location: placeDto['placeDistances'][i].placeTo.location,
+                            latitude: placeDto['placeDistances'][i].placeTo.latitude,
+                            longitude: placeDto['placeDistances'][i].placeTo.longitude,
+                            mainLocation: placeDto['placeDistances'][i].placeTo.mainLocation,
+                            weight: placeDto['placeDistances'][i].placeTo.weight,
+                            binEmpty: placeDto['placeDistances'][i].placeTo.binEmpty
+                        },
+                        distance: 1.0
+                    })
+                }
             }
+            console.log(this.places)
+            this.places[0].placeFrom.binEmpty = 2;
+            this.places[1].placeFrom.binEmpty = 2;
+            this.places[2].placeFrom.binEmpty = 1;
             // this.changeRouteOnMap();
             // this.mapsAPILoader.load().then(() => {
             //
@@ -56,37 +76,37 @@ export class RoadmapPage implements OnInit {
     }
 
     // changeRouteOnMap(mapRoute) {
-        // const infowindow = new google.maps.InfoWindow();
+    // const infowindow = new google.maps.InfoWindow();
 
-        // let origin = new google.maps.LatLng(mapRoute[0], mapRoute[1]);
-        // let destination = new google.maps.LatLng(mapRoute[2], mapRoute[3]);
-        // if (this.polyline != undefined && this.marker1 != undefined && this.marker2 != undefined) {
-        //     this.polyline.setMap(null);
-        //     this.marker1.setMap(null);
-        //     this.marker2.setMap(null);
-        // }
+    // let origin = new google.maps.LatLng(mapRoute[0], mapRoute[1]);
+    // let destination = new google.maps.LatLng(mapRoute[2], mapRoute[3]);
+    // if (this.polyline != undefined && this.marker1 != undefined && this.marker2 != undefined) {
+    //     this.polyline.setMap(null);
+    //     this.marker1.setMap(null);
+    //     this.marker2.setMap(null);
+    // }
 
-        // if (mapRoute != null) {
-        // this.polyline = new google.maps.Polyline({
-        //     path: new google.maps.geometry.encoding.decodePath(mapRoute[4]),
-        //     map: this.map,
-        //     strokeColor: '#4872ff',
-        //     strokeWeight: 5,
-        //     strokeOpacity: 0.7,
-        // });
+    // if (mapRoute != null) {
+    // this.polyline = new google.maps.Polyline({
+    //     path: new google.maps.geometry.encoding.decodePath(mapRoute[4]),
+    //     map: this.map,
+    //     strokeColor: '#4872ff',
+    //     strokeWeight: 5,
+    //     strokeOpacity: 0.7,
+    // });
 
-        // this.marker1 = new google.maps.Marker({
-        //     position: origin,
-        //     map: this.map,
-        //     title: 'Hello World!',
-        //     label: 'A'
-        // });
-        //
-        // this.marker2 = new google.maps.Marker({
-        //     position: destination,
-        //     map: this.map,
-        //     title: 'Hello World!'
-        // });
+    // this.marker1 = new google.maps.Marker({
+    //     position: origin,
+    //     map: this.map,
+    //     title: 'Hello World!',
+    //     label: 'A'
+    // });
+    //
+    // this.marker2 = new google.maps.Marker({
+    //     position: destination,
+    //     map: this.map,
+    //     title: 'Hello World!'
+    // });
     // }
 
     // }

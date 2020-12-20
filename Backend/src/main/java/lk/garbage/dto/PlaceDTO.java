@@ -12,6 +12,8 @@ public class PlaceDTO {
     private double longitude;
     private String mainLocation;
     private PlaceDTO placeNext;
+    private int binEmpty;
+    private double weight;
 
     public PlaceDTO(Place place) {
         if (place != null) {
@@ -69,6 +71,22 @@ public class PlaceDTO {
 
     public void setPlaceNext(PlaceDTO placeNext) {
         this.placeNext = placeNext;
+    }
+
+    public int getBinEmpty() {
+        return binEmpty;
+    }
+
+    public void setBinEmpty(int binEmpty) {
+        this.binEmpty = binEmpty;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
     @Override

@@ -18,7 +18,9 @@ public class PlaceServiceImpl implements PlaceService {
     @Autowired
     private PlaceDistanceRepository placeDistanceRepository;
 
+    private static double MAX_WEIGHT = 70;
     private List<PlaceDistanceDTO> placeDistanceDTOS;
+    private List<SensorDTO> sensors;
 
     @Override
     public BestPathDTO getShortestPath(String enter) {
@@ -26,12 +28,12 @@ public class PlaceServiceImpl implements PlaceService {
         //==============================================================================================================
 
         //Get sensors
-        List<SensorDTO> sensors = new ArrayList<>();
-        sensors.add(new SensorDTO("A1", 50));
-        sensors.add(new SensorDTO("A2", 40));
-        sensors.add(new SensorDTO("A3", 40));
-        sensors.add(new SensorDTO("A4", 40));
-        sensors.add(new SensorDTO("A5", 60));
+        sensors = new ArrayList<>();
+        sensors.add(new SensorDTO("A1", 50.5));
+        sensors.add(new SensorDTO("A2", 32));
+        sensors.add(new SensorDTO("A3", 41));
+        sensors.add(new SensorDTO("A4", 46));
+        sensors.add(new SensorDTO("A5", 68));
 
         //==============================================================================================================
 
@@ -123,9 +125,6 @@ public class PlaceServiceImpl implements PlaceService {
             }
         }
 
-//        System.out.println(pathDTOS);
-//        System.out.println(lowestPath);
-
         BestPathDTO bestPathDTO = new BestPathDTO();
         List<PlaceDistanceDTO> placeDistanceDTOS = new ArrayList<>();
         for (int i = 0; i < lowestPath.path.length - 1; i++) {
@@ -172,17 +171,32 @@ public class PlaceServiceImpl implements PlaceService {
     private PlaceDistanceDTO getPlaceDistanceDTO(String v1, String v2) {
         for (int i = 0; i < placeDistanceDTOS.size(); i++) {
             if (placeDistanceDTOS.get(i).getPlaceFrom().getLabel().equals(v1) && placeDistanceDTOS.get(i).getPlaceTo().getLabel().equals(v2)) {
-                return placeDistanceDTOS.get(i);
+                PlaceDistanceDTO placeDistanceDTO = placeDistanceDTOS.get(i);
+                placeDistanceDTO.getPlaceFrom().setWeight(getWeight(placeDistanceDTO.getPlaceFrom().getLabel()) / MAX_WEIGHT * 100);
+                placeDistanceDTO.getPlaceTo().setWeight(getWeight(placeDistanceDTO.getPlaceTo().getLabel()) / MAX_WEIGHT * 100);
+                return placeDistanceDTO;
             }
 
             if (placeDistanceDTOS.get(i).getPlaceFrom().getLabel().equals(v2) && placeDistanceDTOS.get(i).getPlaceTo().getLabel().equals(v1)) {
                 PlaceDTO placeDTOTemp = placeDistanceDTOS.get(i).getPlaceFrom();
                 placeDistanceDTOS.get(i).setPlaceFrom(placeDistanceDTOS.get(i).getPlaceTo());
                 placeDistanceDTOS.get(i).setPlaceTo(placeDTOTemp);
-                return placeDistanceDTOS.get(i);
+                PlaceDistanceDTO placeDistanceDTO = placeDistanceDTOS.get(i);
+                placeDistanceDTO.getPlaceFrom().setWeight(getWeight(placeDistanceDTO.getPlaceFrom().getLabel()) / MAX_WEIGHT * 100);
+                placeDistanceDTO.getPlaceTo().setWeight(getWeight(placeDistanceDTO.getPlaceTo().getLabel()) / MAX_WEIGHT * 100);
+                return placeDistanceDTO;
             }
         }
         return null;
+    }
+
+    private double getWeight(String label) {
+        for (SensorDTO sensor : sensors) {
+            if (sensor.getLabel().equals(label)) {
+                return sensor.getWeight();
+            }
+        }
+        return 0;
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -197,27 +211,3 @@ public class PlaceServiceImpl implements PlaceService {
         }
     }
 }
-
-
-//            int sensorsSize = sensors.size() - 1;
-//
-//            while (sensorsSize > 0) {
-//
-//                ArrayList<PlaceDistanceDTO> placeDistanceDTOS = new ArrayList<>(placeDistanceDTOS);
-//                placeDistanceDTOS.retainAll(Collections.singletonList(enter));
-//
-//                Collections.sort(placeDistanceDTOS);
-//
-//                shortestPath.add(placeDistanceDTOS.get(0));
-//
-//                placeDistanceDTOS.removeAll(Collections.singletonList(enter));
-//
-//                if (placeDistanceDTOS.get(0).getPlaceFrom().getLabel().equals(enter)) {
-//                    enter = placeDistanceDTOS.get(0).getPlaceTo().getLabel();
-//                } else if (placeDistanceDTOS.get(0).getPlaceTo().getLabel().equals(enter)) {
-//                    enter = placeDistanceDTOS.get(0).getPlaceFrom().getLabel();
-//                }
-//
-//                sensorsSize--;
-//                System.out.println(shortestPath);
-//            }
