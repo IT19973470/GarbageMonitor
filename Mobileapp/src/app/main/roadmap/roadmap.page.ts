@@ -93,7 +93,7 @@ export class RoadmapPage implements OnInit {
         for (let i = 0; i < this.places.length; i++) {
             if (this.places[i].placeFrom.label === JSON.parse(binStatus).placeFrom.label) {
                 this.places[i].placeFrom.binEmpty = 2;
-                if (i < this.places.length) {
+                if (i < this.places.length - 1) {
                     this.places[i + 1].placeFrom.binEmpty = 1;
                 }
             }
