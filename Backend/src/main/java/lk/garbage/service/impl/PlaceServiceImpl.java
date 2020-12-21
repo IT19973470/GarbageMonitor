@@ -8,6 +8,7 @@ import lk.garbage.entity.PlaceDistance;
 import lk.garbage.repository.PlaceDistanceRepository;
 import lk.garbage.service.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -17,6 +18,8 @@ public class PlaceServiceImpl implements PlaceService {
 
     @Autowired
     private PlaceDistanceRepository placeDistanceRepository;
+    @Autowired
+    private SimpMessagingTemplate webSocket;
 
     private static double MAX_WEIGHT = 70;
     private List<PlaceDistanceDTO> placeDistanceDTOS;
@@ -210,4 +213,35 @@ public class PlaceServiceImpl implements PlaceService {
             this.distance = distance;
         }
     }
+
+    //-----------------------------------Notify----------------------------------
+
+    @Override
+    public void notifyBinStatus() {
+        int i = 0;
+        String[] strings = {"A3", "A4", "A1", "A2", "A5"};
+        PlaceDistanceDTO placeDistanceDTO = new PlaceDistanceDTO();
+        PlaceDTO placeFromDTO = new PlaceDTO();
+        PlaceDTO placeToDTO = new PlaceDTO();
+        placeDistanceDTO.setPlaceFrom(placeFromDTO);
+        placeDistanceDTO.setPlaceTo(placeToDTO);
+        placeFromDTO.setBinEmpty(2);
+        placeToDTO.setBinEmpty(1);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int j = 0; j < strings.length; j++) {
+                    placeFromDTO.setLabel(strings[j]);
+//                    placeToDTO.setLabel(strings[j + 1]);
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    webSocket.convertAndSend("/topic/greetings1", placeDistanceDTO);
+                }
+            }
+        }).start();
+    }
+
 }

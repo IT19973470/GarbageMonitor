@@ -1,7 +1,11 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {PlaceDto} from "./placeDto";
+import {RoadmapService} from "./roadmap.service";
+// import {PlaceDto} from "./placeDto";
+// import * as Stomp from '@stomp/stompjs';
+// import {RoadmapService} from "./roadmap.service";
+// import {SockJS} from 'sockjs-client';
 
 declare var google;
 
@@ -22,18 +26,25 @@ export class RoadmapPage implements OnInit {
     // @Output() googleMapRoutesOut: EventEmitter<any> = new EventEmitter();
     places = Array();
     totalTrip = 0;
-    pointer = 0;
+    binStatus;
+    // socket;
+    // stompClient;
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private r_service: RoadmapService
     ) {
+        this.r_service.binUpdate.subscribe((binStatus) => {
+            this.binStatus = binStatus;
+            this.changeBinStatus(binStatus);
+        })
     }
 
     ngOnInit() {
 
     }
 
-    ionViewWillEnter() {
+    ionViewDidEnter() {
         this.map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
             center: {lat: 6.053519, lng: 80.220978},
@@ -67,9 +78,9 @@ export class RoadmapPage implements OnInit {
                 }
             }
             console.log(this.places)
-            this.places[0].placeFrom.binEmpty = 2;
-            this.places[1].placeFrom.binEmpty = 2;
-            this.places[2].placeFrom.binEmpty = 1;
+            this.places[0].placeFrom.binEmpty = 1;
+            // this.places[1].placeFrom.binEmpty = 2;
+            // this.places[2].placeFrom.binEmpty = 1;
             // this.changeRouteOnMap();
             // this.mapsAPILoader.load().then(() => {
             //
@@ -78,39 +89,14 @@ export class RoadmapPage implements OnInit {
         })
     }
 
-    // changeRouteOnMap(mapRoute) {
-    // const infowindow = new google.maps.InfoWindow();
-
-    // let origin = new google.maps.LatLng(mapRoute[0], mapRoute[1]);
-    // let destination = new google.maps.LatLng(mapRoute[2], mapRoute[3]);
-    // if (this.polyline != undefined && this.marker1 != undefined && this.marker2 != undefined) {
-    //     this.polyline.setMap(null);
-    //     this.marker1.setMap(null);
-    //     this.marker2.setMap(null);
-    // }
-
-    // if (mapRoute != null) {
-    // this.polyline = new google.maps.Polyline({
-    //     path: new google.maps.geometry.encoding.decodePath(mapRoute[4]),
-    //     map: this.map,
-    //     strokeColor: '#4872ff',
-    //     strokeWeight: 5,
-    //     strokeOpacity: 0.7,
-    // });
-
-    // this.marker1 = new google.maps.Marker({
-    //     position: origin,
-    //     map: this.map,
-    //     title: 'Hello World!',
-    //     label: 'A'
-    // });
-    //
-    // this.marker2 = new google.maps.Marker({
-    //     position: destination,
-    //     map: this.map,
-    //     title: 'Hello World!'
-    // });
-    // }
-
-    // }
+    changeBinStatus(binStatus) {
+        for (let i = 0; i < this.places.length; i++) {
+            if (this.places[i].placeFrom.label === JSON.parse(binStatus).placeFrom.label) {
+                this.places[i].placeFrom.binEmpty = 2;
+                if (i < this.places.length) {
+                    this.places[i + 1].placeFrom.binEmpty = 1;
+                }
+            }
+        }
+    }
 }

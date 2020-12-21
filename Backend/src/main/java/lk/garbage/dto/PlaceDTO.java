@@ -15,6 +15,8 @@ public class PlaceDTO {
     private int binEmpty;
     private double weight;
 
+    public PlaceDTO(){}
+
     public PlaceDTO(Place place) {
         if (place != null) {
             this.label = place.getLabel();

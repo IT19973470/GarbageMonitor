@@ -7,4 +7,6 @@ import java.util.List;
 public interface PlaceService {
 
     BestPathDTO getShortestPath(String enter);
+
+    void notifyBinStatus();
 }

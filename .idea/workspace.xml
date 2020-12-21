@@ -25,27 +25,28 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="6" />
-          <entry key="html" value="15" />
-          <entry key="java" value="95" />
+          <entry key="html" value="21" />
+          <entry key="java" value="108" />
           <entry key="js" value="1" />
-          <entry key="json" value="2" />
+          <entry key="json" value="4" />
           <entry key="properties" value="1" />
           <entry key="scss" value="11" />
-          <entry key="ts" value="28" />
-          <entry key="xml" value="4" />
+          <entry key="ts" value="56" />
+          <entry key="xml" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="6" />
-          <entry key="HTML" value="15" />
-          <entry key="JAVA" value="95" />
-          <entry key="JSON" value="2" />
+          <entry key="HTML" value="21" />
+          <entry key="JAVA" value="108" />
+          <entry key="JSON" value="3" />
           <entry key="JavaScript" value="1" />
           <entry key="Properties" value="1" />
           <entry key="SCSS" value="11" />
-          <entry key="TypeScript" value="28" />
-          <entry key="XML" value="4" />
+          <entry key="TypeScript" value="56" />
+          <entry key="XML" value="5" />
+          <entry key="tsconfig" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -56,25 +57,25 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="19" />
-          <entry key="html" value="1006" />
-          <entry key="java" value="5082" />
+          <entry key="html" value="1022" />
+          <entry key="java" value="5512" />
           <entry key="json" value="2" />
           <entry key="properties" value="14" />
           <entry key="scss" value="2" />
-          <entry key="ts" value="417" />
-          <entry key="xml" value="4" />
+          <entry key="ts" value="888" />
+          <entry key="xml" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="1006" />
-          <entry key="JAVA" value="5082" />
+          <entry key="HTML" value="1022" />
+          <entry key="JAVA" value="5512" />
           <entry key="JSON" value="2" />
           <entry key="PLAIN_TEXT" value="19" />
           <entry key="Properties" value="14" />
           <entry key="SCSS" value="2" />
-          <entry key="TypeScript" value="417" />
-          <entry key="XML" value="4" />
+          <entry key="TypeScript" value="888" />
+          <entry key="XML" value="8" />
         </counts>
       </usages-collector>
     </session>
@@ -99,11 +100,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/impl/PlaceServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+            <state relative-caret-position="241">
+              <caret line="232" column="50" selection-start-line="232" selection-start-column="50" selection-end-line="232" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -111,35 +112,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap.page.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="69" column="36" lean-forward="true" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap.page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="28" column="119" selection-start-line="28" selection-start-column="119" selection-end-line="28" selection-end-column="119" />
+            <state relative-caret-position="390">
+              <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#i#1;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#2;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#i#4;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#3;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
@@ -149,10 +130,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/controller/PlaceController.java">
+        <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap.page.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+            <state relative-caret-position="320">
+              <caret line="95" column="44" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#70#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="26" column="79" selection-start-line="26" selection-start-column="70" selection-end-line="26" selection-end-column="79" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -168,19 +164,18 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>poi</find>
+      <find>emitDecoratorMetadata</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Mobileapp/src/app/login/login.component.html" />
-        <option value="$PROJECT_DIR$/Mobileapp/src/theme/variables.scss" />
-        <option value="$PROJECT_DIR$/Mobileapp/src/app/email-or-nic-validator.directive.ts" />
-        <option value="$PROJECT_DIR$/Mobileapp/src/app/login/login.component.ts" />
-        <option value="$PROJECT_DIR$/Mobileapp/src/app/login/loginDto.ts" />
-        <option value="$PROJECT_DIR$/Mobileapp/src/app/login/login.service.ts" />
-        <option value="$PROJECT_DIR$/Mobileapp/src/app/main/main-routing.module.ts" />
         <option value="$PROJECT_DIR$/Mobileapp/src/app/app-routing.module.ts" />
         <option value="$PROJECT_DIR$/Mobileapp/src/global.scss" />
         <option value="$PROJECT_DIR$/Mobileapp/src/app/login/login.page.html" />
@@ -189,7 +184,6 @@
         <option value="$PROJECT_DIR$/Mobileapp/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/Mobileapp/src/app/main/main.page.html" />
         <option value="$PROJECT_DIR$/Mobileapp/src/app/app.component.html" />
-        <option value="$PROJECT_DIR$/Mobileapp/src/app/main/main.page.ts" />
         <option value="$PROJECT_DIR$/Mobileapp/src/app/main/main.page.scss" />
         <option value="$PROJECT_DIR$/Backend/src/main/java/dto/LabAssistantDTO.java" />
         <option value="$PROJECT_DIR$/Backend/src/main/java/service/LabAssistantService.java" />
@@ -204,7 +198,6 @@
         <option value="$PROJECT_DIR$/Backend/src/main/java/service/PlaceService.java" />
         <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/Application.java" />
         <option value="$PROJECT_DIR$/Backend/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/Backend/pom.xml" />
         <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/entity/Distance.java" />
         <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/entity/PlaceDistancePK.java" />
         <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/entity/PlaceDistance.java" />
@@ -212,18 +205,28 @@
         <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/repository/PlaceRepository.java" />
         <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/repository/PlaceDistanceRepository.java" />
         <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/PathDTO.java" />
-        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/PlaceService.java" />
-        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/controller/PlaceController.java" />
         <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/BestPathDTO.java" />
-        <option value="$PROJECT_DIR$/Mobileapp/src/index.html" />
         <option value="$PROJECT_DIR$/Mobileapp/angular.json" />
-        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/PlaceDistanceDTO.java" />
-        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/PlaceDTO.java" />
         <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/SensorDTO.java" />
-        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/impl/PlaceServiceImpl.java" />
-        <option value="$PROJECT_DIR$/Mobileapp/src/environments/environment.ts" />
         <option value="$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap.page.html" />
+        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/PlaceDistanceDTO.java" />
+        <option value="$PROJECT_DIR$/Backend/pom.xml" />
+        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/controller/WebSocketConfig.java" />
+        <option value="$PROJECT_DIR$/Mobileapp/src/app/main/main-routing.module.ts" />
+        <option value="$PROJECT_DIR$/Mobileapp/src/app/main/main.module.ts" />
+        <option value="$PROJECT_DIR$/Mobileapp/src/environments/environment.ts" />
+        <option value="$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap-routing.module.ts" />
+        <option value="$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap.module.ts" />
+        <option value="$PROJECT_DIR$/Mobileapp/src/app/app.component.ts" />
+        <option value="$PROJECT_DIR$/Mobileapp/src/index.html" />
+        <option value="$PROJECT_DIR$/Mobileapp/src/polyfills.ts" />
+        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/PlaceService.java" />
+        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/PlaceDTO.java" />
+        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/controller/PlaceController.java" />
+        <option value="$PROJECT_DIR$/Mobileapp/src/app/main/main.page.ts" />
+        <option value="$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap.service.ts" />
         <option value="$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap.page.ts" />
+        <option value="$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/impl/PlaceServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -1597,9 +1600,6 @@
       <path value="$PROJECT_DIR$/Mobileapp/node_modules/socket.io-parser/package.json" />
       <path value="$PROJECT_DIR$/Mobileapp/node_modules/socket.io/node_modules/debug/package.json" />
       <path value="$PROJECT_DIR$/Mobileapp/node_modules/socket.io/package.json" />
-      <path value="$PROJECT_DIR$/Mobileapp/node_modules/sockjs-client/node_modules/debug/package.json" />
-      <path value="$PROJECT_DIR$/Mobileapp/node_modules/sockjs-client/node_modules/faye-websocket/package.json" />
-      <path value="$PROJECT_DIR$/Mobileapp/node_modules/sockjs-client/package.json" />
       <path value="$PROJECT_DIR$/Mobileapp/node_modules/sockjs/package.json" />
       <path value="$PROJECT_DIR$/Mobileapp/node_modules/socks-proxy-agent/node_modules/agent-base/package.json" />
       <path value="$PROJECT_DIR$/Mobileapp/node_modules/socks-proxy-agent/package.json" />
@@ -1853,10 +1853,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1940" />
-    <option name="height" value="1050" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -1991,6 +1991,14 @@
               <item name="Mobileapp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GarbageMonitor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GarbageMonitor" type="462c0819:PsiDirectoryNode" />
+              <item name="Mobileapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -2024,7 +2032,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1608495375502" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1608565210198" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../GarbageMonitor-0cd0e7bca5b37b4e512f9ba6cb90bcc395d75d19/GarbageMonitor-0cd0e7bca5b37b4e512f9ba6cb90bcc395d75d19" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -2099,17 +2107,18 @@
       <workItem from="1600848099866" duration="178000" />
       <workItem from="1600944659425" duration="74851000" />
       <workItem from="1608456400127" duration="1946000" />
-      <workItem from="1608464180384" duration="18034000" />
+      <workItem from="1608464180384" duration="43536000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122773000" />
+    <option name="totallyTimeSpent" value="148275000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15771812" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15771812" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -2127,12 +2136,12 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.22836879" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.28936172" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Spring" order="12" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.32907802" />
-      <window_info anchor="bottom" id="Run Dashboard" order="15" weight="0.30921987" />
+      <window_info anchor="bottom" id="Run Dashboard" order="15" visible="true" weight="0.30921987" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -2156,7 +2165,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/impl/PlaceServiceImpl.java</url>
-          <line>173</line>
+          <line>176</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -2164,31 +2173,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/app.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/main.page.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="118" column="1" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/controller/PatientController.java" />
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/dto/ReportSpecimenDTO.java" />
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/dto/ReportFieldDTO.java" />
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/dto/ReportTypeDTO.java" />
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/dto/PatientReportFieldDTO.java" />
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/dto/FieldDTO.java" />
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/dto/ReportDTO.java" />
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/dto/PatientDTO.java" />
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/dto/DoctorDTO.java" />
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/dto/LabAssistantDTO.java" />
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/service/impl/PatientServiceImpl.java" />
     <entry file="file://$PROJECT_DIR$/Backend/src/main/java/service/PatientService.java" />
     <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/placeDto.ts">
       <provider selected="true" editor-type-id="text-editor">
@@ -2228,13 +2212,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="64" selection-start-line="1" selection-start-column="64" selection-end-line="1" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -2331,29 +2308,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/PlaceService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap.module.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap.service.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mobileapp/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="25" column="126" selection-start-line="25" selection-start-column="126" selection-end-line="25" selection-end-column="126" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Mobileapp/angular.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -2375,10 +2329,116 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/main.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mobileapp/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mobileapp/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-663" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mobileapp/src/environments/environment.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="45" column="53" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="20" column="23" lean-forward="true" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mobileapp/src/polyfills.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mobileapp/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="38" selection-start-line="38" selection-end-line="40" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/controller/WebSocketConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="19" column="60" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/PlaceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/PlaceDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="170">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
           <folding>
             <element signature="e#1866#1867#0" expanded="true" />
             <element signature="e#1895#1896#0" expanded="true" />
@@ -2388,56 +2448,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/PlaceDistanceDTO.java">
+    <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/main.page.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/main-routing.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="255">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/app-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/controller/PlaceController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        <state relative-caret-position="116">
+          <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/impl/PlaceServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/main.page.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+        <state relative-caret-position="136">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Mobileapp/src/environments/environment.ts">
+    <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/login/login.page.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+        <state relative-caret-position="609">
+          <caret line="49" column="20" lean-forward="true" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="26" column="79" selection-start-line="26" selection-start-column="70" selection-end-line="26" selection-end-column="79" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/dto/PlaceDistanceDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap.page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="28" column="119" selection-start-line="28" selection-start-column="119" selection-end-line="28" selection-end-column="119" />
+        <state relative-caret-position="390">
+          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#1;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#2;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#4;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#ion-content#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#3;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#1;n#ion-content#0;n#!!top" expanded="true" />
@@ -2447,8 +2531,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Mobileapp/src/app/main/roadmap/roadmap.page.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="69" column="36" lean-forward="true" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
+        <state relative-caret-position="320">
+          <caret line="95" column="44" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/src/main/java/lk/garbage/service/impl/PlaceServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="232" column="50" selection-start-line="232" selection-start-column="50" selection-end-line="232" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
