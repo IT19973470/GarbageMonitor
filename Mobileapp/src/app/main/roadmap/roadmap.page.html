@@ -40,22 +40,20 @@
 
                         <i *ngIf="place.placeFrom.binEmpty===2" class="fas fa-trash-alt"
                            style="font-size: 23px;color: #00a400"></i>
-                        <i *ngIf="(place.placeFrom.binEmpty===0 || place.placeFrom.binEmpty===1) && place.placeFrom.weight<50"
+                        <i *ngIf="(place.placeFrom.binEmpty===0 || place.placeFrom.binEmpty===1)"
                            class="fas fa-trash-alt"
-                           style="font-size: 23px;color: #ff9004"></i>
-                        <i *ngIf="(place.placeFrom.binEmpty===0 || place.placeFrom.binEmpty===1) && place.placeFrom.weight>=50"
-                           class="fas fa-trash-alt"
-                           style="font-size: 23px;color: red"></i>
+                           style="font-size: 23px"
+                           [ngStyle]="{'color':place.placeFrom.weight<50?'#ff8e00':
+                           place.placeFrom.weight<85?'#ff5a03':'#ff010d'}"></i>
 
                         <i *ngIf="place.placeFrom.binEmpty===2"
                            class="fas fa-check"
                            style="font-size: 22px;margin-left: 8px;color: #00a400"></i>
-                        <i *ngIf="(place.placeFrom.binEmpty===0 || place.placeFrom.binEmpty===1) && place.placeFrom.weight<50"
+                        <i *ngIf="(place.placeFrom.binEmpty===0 || place.placeFrom.binEmpty===1)"
                            class="fas fa-exclamation-triangle"
-                           style="font-size: 20px;margin-left: 8px;color: #ff9004"></i>
-                        <i *ngIf="(place.placeFrom.binEmpty===0 || place.placeFrom.binEmpty===1) && place.placeFrom.weight>=50"
-                           class="fas fa-exclamation-triangle"
-                           style="font-size: 20px;margin-left: 8px;color: red"></i>
+                           style="font-size: 20px;margin-left: 8px"
+                           [ngStyle]="{'color':place.placeFrom.weight<50?'#ff8e00':
+                           place.placeFrom.weight<85?'#ff5a03':'#ff010d'}"></i>
 
                     </div>
                 </div>

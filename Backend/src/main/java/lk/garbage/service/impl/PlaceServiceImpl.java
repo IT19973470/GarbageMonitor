@@ -25,10 +25,14 @@ public class PlaceServiceImpl implements PlaceService {
     private List<PlaceDistanceDTO> placeDistanceDTOS = new ArrayList<>();
     private List<SensorDTO> sensors = new ArrayList<>();
     private static int BINS_COUNT = 5;
+    private int ongoingBinsCount = 0;
+    private static double MIN_WEIGHT = 10;
 
     @Override
     public void getShortestPath(String enter) {
         sensors = new ArrayList<>();
+        ongoingBinsCount = 0;
+//        calcShortestPath(enter);
         //Notify nodes
     }
 
@@ -39,10 +43,10 @@ public class PlaceServiceImpl implements PlaceService {
         //Get sensors
 //        sensors = new ArrayList<>();
 //        sensors.add(new SensorDTO("A1", 50.5));
-//        sensors.add(new SensorDTO("A2", 32));
+//        sensors.add(new SensorDTO("A2", 68));
 //        sensors.add(new SensorDTO("A3", 41));
-//        sensors.add(new SensorDTO("A4", 46));
-//        sensors.add(new SensorDTO("A5", 68));
+//        sensors.add(new SensorDTO("A4", 32));
+//        sensors.add(new SensorDTO("A5", 46));
 
         //==============================================================================================================
 
@@ -256,8 +260,13 @@ public class PlaceServiceImpl implements PlaceService {
                 }
             }
         } else if (weight > 0) {
-            sensors.add(new SensorDTO(label, weight));
-            if (sensors.size() == BINS_COUNT) {
+            if (weight > MIN_WEIGHT) {
+                ongoingBinsCount++;
+                sensors.add(new SensorDTO(label, weight));
+            } else {
+                ongoingBinsCount++;
+            }
+            if (ongoingBinsCount == BINS_COUNT) {
                 calcShortestPath("No");
             }
         }
