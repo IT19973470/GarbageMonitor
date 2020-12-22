@@ -26,7 +26,7 @@ export class RoadmapPage implements OnInit {
     // @Output() googleMapRoutesOut: EventEmitter<any> = new EventEmitter();
     places = Array();
     totalTrip = 0;
-    binStatus;
+    // binStatus;
     // socket;
     // stompClient;
 
@@ -35,8 +35,12 @@ export class RoadmapPage implements OnInit {
         private r_service: RoadmapService
     ) {
         this.r_service.binUpdate.subscribe((binStatus) => {
-            this.binStatus = binStatus;
+            // this.binStatus = binStatus;
             this.changeBinStatus(binStatus);
+        })
+
+        this.r_service.binsSet.subscribe((placeDto) => {
+            this.setBins(placeDto);
         })
     }
 
@@ -51,34 +55,9 @@ export class RoadmapPage implements OnInit {
             // mapTypeId: 'terrain'
         });
 
-        this.http.get<any>(environment.backend_url + "/api/place/getShortestPath").subscribe((placeDto) => {
+        this.http.get<any>(environment.backend_url + "/api/place/shortestPath").subscribe((placeDto) => {
             // console.log(placeDto)
-            this.totalTrip = placeDto.distance;
-            for (let i = 0; i < placeDto['placeDistances'].length; i++) {
-                // this.marker1 = new google.maps.Marker({
-                //     position: new google.maps.LatLng(placeDtos[i].latitude, placeDtos[i].longitude),
-                //     map: this.map,
-                //     label: placeDtos[i].label
-                // });
 
-                this.places.push(placeDto['placeDistances'][i])
-                if (i === placeDto['placeDistances'].length - 1) {
-                    this.places.push({
-                        placeFrom: {
-                            label: placeDto['placeDistances'][i].placeTo.label,
-                            location: placeDto['placeDistances'][i].placeTo.location,
-                            latitude: placeDto['placeDistances'][i].placeTo.latitude,
-                            longitude: placeDto['placeDistances'][i].placeTo.longitude,
-                            mainLocation: placeDto['placeDistances'][i].placeTo.mainLocation,
-                            weight: placeDto['placeDistances'][i].placeTo.weight,
-                            binEmpty: placeDto['placeDistances'][i].placeTo.binEmpty
-                        },
-                        distance: 1.0
-                    })
-                }
-            }
-            console.log(this.places)
-            this.places[0].placeFrom.binEmpty = 1;
             // this.places[1].placeFrom.binEmpty = 2;
             // this.places[2].placeFrom.binEmpty = 1;
             // this.changeRouteOnMap();
@@ -90,6 +69,7 @@ export class RoadmapPage implements OnInit {
     }
 
     changeBinStatus(binStatus) {
+        // console.log(JSON.parse(binStatus))
         for (let i = 0; i < this.places.length; i++) {
             if (this.places[i].placeFrom.label === JSON.parse(binStatus).placeFrom.label) {
                 this.places[i].placeFrom.binEmpty = 2;
@@ -98,5 +78,34 @@ export class RoadmapPage implements OnInit {
                 }
             }
         }
+    }
+
+    setBins(placeDto){
+        this.totalTrip = placeDto.distance;
+        for (let i = 0; i < placeDto['placeDistances'].length; i++) {
+            // this.marker1 = new google.maps.Marker({
+            //     position: new google.maps.LatLng(placeDtos[i].latitude, placeDtos[i].longitude),
+            //     map: this.map,
+            //     label: placeDtos[i].label
+            // });
+
+            this.places.push(placeDto['placeDistances'][i])
+            if (i === placeDto['placeDistances'].length - 1) {
+                this.places.push({
+                    placeFrom: {
+                        label: placeDto['placeDistances'][i].placeTo.label,
+                        location: placeDto['placeDistances'][i].placeTo.location,
+                        latitude: placeDto['placeDistances'][i].placeTo.latitude,
+                        longitude: placeDto['placeDistances'][i].placeTo.longitude,
+                        mainLocation: placeDto['placeDistances'][i].placeTo.mainLocation,
+                        weight: placeDto['placeDistances'][i].placeTo.weight,
+                        binEmpty: placeDto['placeDistances'][i].placeTo.binEmpty
+                    },
+                    distance: 1.0
+                })
+            }
+        }
+        console.log(this.places)
+        this.places[0].placeFrom.binEmpty = 1;
     }
 }

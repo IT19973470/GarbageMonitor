@@ -22,21 +22,27 @@ public class PlaceServiceImpl implements PlaceService {
     private SimpMessagingTemplate webSocket;
 
     private static double MAX_WEIGHT = 70;
-    private List<PlaceDistanceDTO> placeDistanceDTOS;
-    private List<SensorDTO> sensors;
+    private List<PlaceDistanceDTO> placeDistanceDTOS = new ArrayList<>();
+    private List<SensorDTO> sensors = new ArrayList<>();
+    private static int BINS_COUNT = 5;
 
     @Override
-    public BestPathDTO getShortestPath(String enter) {
+    public void getShortestPath(String enter) {
+        sensors = new ArrayList<>();
+        //Notify nodes
+    }
+
+    private void calcShortestPath(String enter) {
 
         //==============================================================================================================
 
         //Get sensors
-        sensors = new ArrayList<>();
-        sensors.add(new SensorDTO("A1", 50.5));
-        sensors.add(new SensorDTO("A2", 32));
-        sensors.add(new SensorDTO("A3", 41));
-        sensors.add(new SensorDTO("A4", 46));
-        sensors.add(new SensorDTO("A5", 68));
+//        sensors = new ArrayList<>();
+//        sensors.add(new SensorDTO("A1", 50.5));
+//        sensors.add(new SensorDTO("A2", 32));
+//        sensors.add(new SensorDTO("A3", 41));
+//        sensors.add(new SensorDTO("A4", 46));
+//        sensors.add(new SensorDTO("A5", 68));
 
         //==============================================================================================================
 
@@ -135,8 +141,16 @@ public class PlaceServiceImpl implements PlaceService {
         }
         bestPathDTO.setPlaceDistances(placeDistanceDTOS);
         bestPathDTO.setDistance(lowestPath.distance);
+//        this.placeDistanceDTOS = new ArrayList<>();
+        this.placeDistanceDTOS.addAll(placeDistanceDTOS);
 
-        return bestPathDTO;
+        PlaceDistanceDTO placeDistanceDTO = new PlaceDistanceDTO();
+        PlaceDTO placeFromDTO = placeDistanceDTOS.get(placeDistanceDTOS.size() - 1).getPlaceTo();
+        placeDistanceDTO.setPlaceFrom(placeFromDTO);
+        this.placeDistanceDTOS.add(placeDistanceDTO);
+
+        webSocket.convertAndSend("/topic/greetings2", bestPathDTO);
+//        return bestPathDTO;
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -216,10 +230,7 @@ public class PlaceServiceImpl implements PlaceService {
 
     //-----------------------------------Notify----------------------------------
 
-    @Override
-    public void notifyBinStatus() {
-        int i = 0;
-        String[] strings = {"A3", "A4", "A1", "A2", "A5"};
+    private void setBinToEmpty(int pos) {//0 - full, 1 - current, 2 - empty
         PlaceDistanceDTO placeDistanceDTO = new PlaceDistanceDTO();
         PlaceDTO placeFromDTO = new PlaceDTO();
         PlaceDTO placeToDTO = new PlaceDTO();
@@ -227,21 +238,32 @@ public class PlaceServiceImpl implements PlaceService {
         placeDistanceDTO.setPlaceTo(placeToDTO);
         placeFromDTO.setBinEmpty(2);
         placeToDTO.setBinEmpty(1);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int j = 0; j < strings.length; j++) {
-                    placeFromDTO.setLabel(strings[j]);
-//                    placeToDTO.setLabel(strings[j + 1]);
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    webSocket.convertAndSend("/topic/greetings1", placeDistanceDTO);
+        placeFromDTO.setLabel(placeDistanceDTOS.get(pos).getPlaceFrom().getLabel());
+
+        if (pos < placeDistanceDTOS.size() - 1) {
+            placeToDTO.setLabel(placeDistanceDTOS.get(pos + 1).getPlaceFrom().getLabel());
+        }
+
+        webSocket.convertAndSend("/topic/greetings1", placeDistanceDTO);
+    }
+
+    @Override
+    public void binStatus(String label, double weight) {
+        if (weight == 0) {
+            for (int i = 0; i < placeDistanceDTOS.size(); i++) {
+                if (placeDistanceDTOS.get(i).getPlaceFrom().getLabel().equals(label)) {
+                    setBinToEmpty(i);
                 }
             }
-        }).start();
+        } else if (weight > 0) {
+            sensors.add(new SensorDTO(label, weight));
+            if (sensors.size() == BINS_COUNT) {
+                calcShortestPath("No");
+            }
+        }
+
+//        System.out.println(placeDistanceDTOS);
+//        webSocket.convertAndSend("/topic/greetings1", placeDistanceDTO);
     }
 
 }

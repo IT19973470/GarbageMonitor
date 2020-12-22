@@ -6,7 +6,10 @@ import java.util.List;
 
 public interface PlaceService {
 
-    BestPathDTO getShortestPath(String enter);
+    void getShortestPath(String enter);
 
-    void notifyBinStatus();
+//    void notifyBinStatus();
+
+    void binStatus(String label, double weight);
+
 }

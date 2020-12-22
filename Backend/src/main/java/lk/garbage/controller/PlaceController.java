@@ -19,15 +19,19 @@ public class PlaceController {
     @Autowired
     private PlaceService placeService;
 
-    @GetMapping(value = "/getShortestPath/{enter}")
-    public BestPathDTO getShortestPathWithEntrance(@PathVariable String enter) {
-        return placeService.getShortestPath(enter);
+    @GetMapping(value = "/shortestPath/{enter}")
+    public void getShortestPathWithEntrance(@PathVariable String enter) {
+        placeService.getShortestPath(enter);
     }
 
-    @GetMapping(value = "/getShortestPath")
-    public BestPathDTO getShortestPath() {
-        placeService.notifyBinStatus();
-        return placeService.getShortestPath("No");
+    @GetMapping(value = "/shortestPath")
+    public void getShortestPath() {
+        placeService.getShortestPath("No");
+    }
+
+    @GetMapping(value = "/binSignal/{label}/{weight}")
+    public void binStatus(@PathVariable String label, @PathVariable double weight) {
+        placeService.binStatus(label, weight);
     }
 
 //    @MessageMapping("/hello1")
