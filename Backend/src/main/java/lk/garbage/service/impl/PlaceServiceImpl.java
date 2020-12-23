@@ -37,33 +37,18 @@ public class PlaceServiceImpl implements PlaceService {
         sensors = new ArrayList<>();
         ongoingBinsCount = 0;
         System.out.println("00");
-
+//Notify nodes
         HttpURLConnection connection = null;
         try {
             URL url = new URL("http://192.168.1.8/get_weight");
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-//            connection.setRequestProperty("Content-Type",
-//                    "application/x-www-form-urlencoded");
-            connection.getResponseCode();
-//            connection.setRequestProperty("Content-Length",
-//                    Integer.toString(urlParameters.getBytes().length));
-//            connection.setRequestProperty("Content-Language", "en-US");
 
-//            connection.setUseCaches(false);
-//            connection.setDoOutput(true);
-//
-//            //Send request
-//            DataOutputStream wr = new DataOutputStream(
-//                    connection.getOutputStream());
-//            wr.writeBytes(urlParameters);
-//
-//            wr.close();
+            connection.getResponseCode();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        calcShortestPath(enter);
-        //Notify nodes
     }
 
     private void calcShortestPath(String enter) {
