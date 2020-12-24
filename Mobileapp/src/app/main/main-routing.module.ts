@@ -15,14 +15,19 @@ const routes: Routes = [
         children:[
             {
                 path: 'roadmap',
-                loadChildren: () => import('./roadmap/roadmap.module').then(m => m.RoadmapPageModule)
+                loadChildren: () => import('./roadmap/roadmap.module').then(m => m.RoadmapPageModule),
+                // data: {
+                //     preload: false
+                // },
             }
         ]
     }
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
+    imports: [
+        RouterModule.forChild(routes)
+    ],
     exports: [RouterModule],
 })
 export class MainPageRoutingModule {

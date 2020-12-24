@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {LoginDto} from "./loginDto";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 
@@ -12,7 +11,7 @@ export class LoginService {
     constructor(private http: HttpClient) {
     }
 
-    accLogin(member:LoginDto): Observable<LoginDto> {
-        return this.http.post<LoginDto>(environment.backend_url + URL + "/login", member);
+    accLogin(member): Observable<any> {
+        return this.http.post<any>(environment.backend_url + URL + "/login", member);
     }
 }

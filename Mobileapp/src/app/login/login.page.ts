@@ -1,24 +1,22 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {LoginDto} from "./loginDto";
 import {LoginService} from "./login.service";
 import {Router} from "@angular/router";
-import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+    selector: 'app-login',
+    templateUrl: './login.page.html',
+    styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
 
     @ViewChild('loginForm') public loginForm: NgForm;
     userNameMsg = '';
     passwordMsg = '';
-    member = new LoginDto();
+    member = this.getMember();
     logged = true;
 
-    constructor(private loginService: LoginService, private router: Router,private navController:NavController) {
+    constructor(private loginService: LoginService, private router: Router) {
     }
 
     ngOnInit() {
@@ -29,7 +27,7 @@ export class LoginPage implements OnInit {
         this.userNameMsg = '';
         this.passwordMsg = '';
         this.logged = true;
-        this.member = new LoginDto();
+        this.member = this.getMember();
         this.loginForm.resetForm()
     }
 
@@ -54,6 +52,17 @@ export class LoginPage implements OnInit {
         //     }
         // });
         this.router.navigate(['/main']);
-        // this.navController.navigateBack(['/main/roadmap']);
+    }
+
+    getMember() {
+        return {
+            nic: '',
+            title: '',
+            name: '',
+            address: '',
+            password: '',
+            mobile: '',
+            reply: ''
+        }
     }
 }

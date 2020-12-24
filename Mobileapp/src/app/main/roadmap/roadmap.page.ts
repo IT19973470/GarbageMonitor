@@ -2,6 +2,8 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {RoadmapService} from "./roadmap.service";
+import {LoginService} from "../../login/login.service";
+import {Router} from "@angular/router";
 // import {PlaceDto} from "./placeDto";
 // import * as Stomp from '@stomp/stompjs';
 // import {RoadmapService} from "./roadmap.service";
@@ -28,26 +30,17 @@ export class RoadmapPage implements OnInit {
     binAvailable = this.getBins();
     totalTrip = 0;
     totalBins = 0;
-    sendReq = true;
 
     constructor(
         private http: HttpClient,
-        private r_service: RoadmapService
+        private r_service: RoadmapService,
+        private router: Router
     ) {
-        this.r_service.binInitializer.subscribe(() => {
-            this.places = Array();
-            this.binAvailable = this.getBins();
-            this.totalBins = 0;
-            this.sendReq = true;
-            this.ionView();
-        })
-
         this.r_service.binUpdate.subscribe((binStatus) => {
             this.changeBinStatus(binStatus);
         })
 
         this.r_service.binsSet.subscribe((placeDto) => {
-            this.places = Array();
             this.setBins(placeDto);
         })
 
@@ -60,17 +53,8 @@ export class RoadmapPage implements OnInit {
 
     }
 
-    ionView() {
-        this.map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: {lat: 6.053519, lng: 80.220978},
-            // mapTypeId: 'terrain'
-        });
-
-        if (this.sendReq) {
-            this.http.get<any>(environment.backend_url + "/api/place/shortestPath").subscribe();
-            this.sendReq = false;
-        }
+    ionViewWillEnter() {
+        this.initPlaces();
 
         //     // console.log(placeDto)
         //
@@ -82,6 +66,19 @@ export class RoadmapPage implements OnInit {
         //     //     }12
         //     // );
         // })
+    }
+
+    initPlaces() {
+        this.map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: {lat: 6.053519, lng: 80.220978},
+            // mapTypeId: 'terrain'
+        });
+        console.log(3)
+        this.totalBins = 0;
+        this.places = Array();
+        this.binAvailable = this.getBins();
+        this.http.get<any>(environment.backend_url + "/api/place/shortestPath").subscribe();
     }
 
     proceedShortestPath() {
@@ -139,6 +136,10 @@ export class RoadmapPage implements OnInit {
                 }
             }
         }
+    }
+
+    goBack() {
+        this.initPlaces();
     }
 
     getBins() {
