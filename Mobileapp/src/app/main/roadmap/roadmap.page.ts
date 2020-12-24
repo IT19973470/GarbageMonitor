@@ -25,6 +25,7 @@ export class RoadmapPage implements OnInit {
     // placeLatLong: Array<number> = new Array<number>();
     // @Output() googleMapRoutesOut: EventEmitter<any> = new EventEmitter();
     places = Array();
+    binAvailable=Array();
     totalTrip = 0;
     // binStatus;
     // socket;
@@ -42,6 +43,10 @@ export class RoadmapPage implements OnInit {
         this.r_service.binsSet.subscribe((placeDto) => {
             this.setBins(placeDto);
         })
+
+        this.r_service.binAvailable.subscribe((placeDto) => {
+            this.setBinAvailable(placeDto);
+        })
     }
 
     ngOnInit() {
@@ -49,11 +54,11 @@ export class RoadmapPage implements OnInit {
     }
 
     ionViewDidEnter() {
-        this.map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: {lat: 6.053519, lng: 80.220978},
-            // mapTypeId: 'terrain'
-        });
+        // this.map = new google.maps.Map(document.getElementById('map'), {
+        //     zoom: 15,
+        //     center: {lat: 6.053519, lng: 80.220978},
+        //     // mapTypeId: 'terrain'
+        // });
 
         this.http.get<any>(environment.backend_url + "/api/place/shortestPath").subscribe((placeDto) => {
             // console.log(placeDto)
@@ -107,5 +112,9 @@ export class RoadmapPage implements OnInit {
         }
         console.log(this.places)
         this.places[0].placeFrom.binEmpty = 1;
+    }
+
+    setBinAvailable(placeDto){
+        this.binAvailable.push(placeDto)
     }
 }

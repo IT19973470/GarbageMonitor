@@ -13,6 +13,11 @@
         <div class="col-12" style="text-align: center;margin-top: 100px;font-size: 30px">
             Pending
         </div>
+        <div class="col-12" style="text-align: center;margin-top: 20px">
+            <div style="color: #ff8607;font-weight: bold;font-size: 25px" *ngFor="let place of binAvailable">
+                <span>{{place}}</span> <i class="fas fa-check" style="margin-left: 20px"></i>
+            </div>
+        </div>
     </div>
 
     <div class="row" style="margin-top: 10px;border-bottom: 1px solid #bebebe" *ngIf="places.length>0">

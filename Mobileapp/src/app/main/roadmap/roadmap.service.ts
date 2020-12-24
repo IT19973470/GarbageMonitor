@@ -13,6 +13,7 @@ export class RoadmapService {
     stompClient;
     binUpdate = new Subject();
     binsSet = new Subject();
+    binAvailable = new Subject();
 
     constructor() {
         this.initSocket()
@@ -31,6 +32,10 @@ export class RoadmapService {
             });
             that.stompClient.subscribe('/topic/greetings2', function (binStatus) {
                 that.binsSet.next(JSON.parse(binStatus.body))
+                // console.log(binStatus.body)
+            });
+            that.stompClient.subscribe('/topic/greetings3', function (binStatus) {
+                that.binAvailable.next(binStatus.body)
                 // console.log(binStatus.body)
             });
         })

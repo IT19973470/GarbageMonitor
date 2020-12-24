@@ -37,11 +37,11 @@ public class PlaceServiceImpl implements PlaceService {
         sensors = new ArrayList<>();
         ongoingBinsCount = 0;
         System.out.println("00");
-//Notify nodes
-        HttpURLConnection connection = null;
+
+        //Notify nodes
         try {
             URL url = new URL("http://192.168.1.8/get_weight");
-            connection = (HttpURLConnection) url.openConnection();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
 
             connection.getResponseCode();
@@ -53,9 +53,6 @@ public class PlaceServiceImpl implements PlaceService {
 
     private void calcShortestPath(String enter) {
 
-        //==============================================================================================================
-
-        //Get sensors
 //        sensors = new ArrayList<>();
 //        sensors.add(new SensorDTO("A1", 50.5));
 //        sensors.add(new SensorDTO("A2", 68));
@@ -269,6 +266,7 @@ public class PlaceServiceImpl implements PlaceService {
     @Override
     public void binStatus(String label, double weight) {
         System.out.println(label);
+        webSocket.convertAndSend("/topic/greetings3", label);
         if (weight == 0) {
             for (int i = 0; i < placeDistanceDTOS.size(); i++) {
                 if (placeDistanceDTOS.get(i).getPlaceFrom().getLabel().equals(label)) {
