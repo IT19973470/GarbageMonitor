@@ -25,16 +25,20 @@ export class RoadmapPage implements OnInit {
     // placeLatLong: Array<number> = new Array<number>();
     // @Output() googleMapRoutesOut: EventEmitter<any> = new EventEmitter();
     places = Array();
-    binAvailable = Array();
+    binAvailable = this.getBins();
     totalTrip = 0;
+    totalBins = 0;
+    sendReq = true;
 
     constructor(
         private http: HttpClient,
         private r_service: RoadmapService
     ) {
-        this.r_service.binInitializer.subscribe(()=>{
+        this.r_service.binInitializer.subscribe(() => {
             this.places = Array();
-            this.binAvailable = Array();
+            this.binAvailable = this.getBins();
+            this.totalBins = 0;
+            this.sendReq = true;
             this.ionView();
         })
 
@@ -63,7 +67,11 @@ export class RoadmapPage implements OnInit {
             // mapTypeId: 'terrain'
         });
 
-        this.http.get<any>(environment.backend_url + "/api/place/shortestPath").subscribe();
+        if (this.sendReq) {
+            this.http.get<any>(environment.backend_url + "/api/place/shortestPath").subscribe();
+            this.sendReq = false;
+        }
+
         //     // console.log(placeDto)
         //
         //     // this.places[1].placeFrom.binEmpty = 2;
@@ -74,6 +82,10 @@ export class RoadmapPage implements OnInit {
         //     //     }12
         //     // );
         // })
+    }
+
+    proceedShortestPath() {
+        this.http.get<any>(environment.backend_url + "/api/place/proceed").subscribe();
     }
 
     changeBinStatus(binStatus) {
@@ -112,11 +124,45 @@ export class RoadmapPage implements OnInit {
                 })
             }
         }
-        console.log(this.places)
+        // console.log(this.places)
         this.places[0].placeFrom.binEmpty = 1;
     }
 
     setBinAvailable(placeDto) {
-        this.binAvailable.push(placeDto)
+        if (this.totalBins < this.binAvailable.length) {
+            for (let bin of this.binAvailable) {
+                if (bin.label === placeDto) {
+                    bin.available = true;
+                }
+                if (bin.label === placeDto && bin.available) {
+                    this.totalBins++;
+                }
+            }
+        }
+    }
+
+    getBins() {
+        return [
+            {
+                label: "A1",
+                available: false
+            },
+            {
+                label: "A2",
+                available: false
+            },
+            {
+                label: "A3",
+                available: false
+            },
+            {
+                label: "A4",
+                available: false
+            },
+            {
+                label: "A5",
+                available: false
+            }
+        ]
     }
 }

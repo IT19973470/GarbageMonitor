@@ -29,6 +29,11 @@ public class PlaceController {
         placeService.getShortestPath("No");
     }
 
+    @GetMapping(value = "/proceed")
+    public void proceedShortestPath() {
+        placeService.calcShortestPath("No");
+    }
+
     @GetMapping(value = "/binSignal/{label}/{weight}")
     public void binStatus(@PathVariable String label, @PathVariable double weight) {
         placeService.binStatus(label, weight);

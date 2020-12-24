@@ -25,11 +25,11 @@ public class PlaceServiceImpl implements PlaceService {
     @Autowired
     private SimpMessagingTemplate webSocket;
 
-    private static final double MAX_WEIGHT = 70;
+    private static final double MAX_WEIGHT = 90;
     private List<PlaceDistanceDTO> placeDistanceDTOS = new ArrayList<>();
     private List<SensorDTO> sensors = new ArrayList<>();
-    private static final int BINS_COUNT = 5;
-    private int ongoingBinsCount = 0;
+//    private static final int BINS_COUNT = 5;
+//    private int ongoingBinsCount = 0;
     private static final double MIN_WEIGHT = 10;
 
     private static final String[] IP_ADDRESSES = {"192.168.1.8"};
@@ -37,7 +37,7 @@ public class PlaceServiceImpl implements PlaceService {
     @Override
     public void getShortestPath(String enter) {
         sensors = new ArrayList<>();
-        ongoingBinsCount = 0;
+//        ongoingBinsCount = 0;
         System.out.println("Sent");
 
         //Notify nodes
@@ -54,7 +54,8 @@ public class PlaceServiceImpl implements PlaceService {
         }
     }
 
-    private void calcShortestPath(String enter) {
+    @Override
+    public void calcShortestPath(String enter) {
 
 //        sensors = new ArrayList<>();
 //        sensors.add(new SensorDTO("A1", 50.5));
@@ -278,14 +279,15 @@ public class PlaceServiceImpl implements PlaceService {
             }
         } else if (weight > 0) {
             if (weight > MIN_WEIGHT) {
-                ongoingBinsCount++;
+//                ongoingBinsCount++;
                 sensors.add(new SensorDTO(label, weight));
-            } else {
-                ongoingBinsCount++;
             }
-            if (ongoingBinsCount == BINS_COUNT) {
-                calcShortestPath("No");
-            }
+//            else {
+//                ongoingBinsCount++;
+//            }
+//            if (ongoingBinsCount == BINS_COUNT) {
+//                calcShortestPath("No");
+//            }
         }
 
 //        System.out.println(placeDistanceDTOS);

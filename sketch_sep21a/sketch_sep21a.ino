@@ -4,9 +4,12 @@
 
 const char* ssid = "TP-Link_AP_7E94";
 const char* password = "tplink1234321";
-//const float weight1 = 90.5;
-//const float weight2 = 50.5;
-//const float weight3 = 0;
+float weight1 = 50.5;
+float weight2 = 32;
+float weight3 = 41;
+float weight4 = 78;
+float weight5 = 46;
+
 boolean isZero1 = false;
 boolean isZero2 = false;
 boolean isZero3 = false;
@@ -34,7 +37,7 @@ void setup() {
 }
 
 void loop() {
-//    server.handleClient();
+  //    server.handleClient();
   Serial.println(digitalRead(D1));
   Serial.println(digitalRead(D2));
   Serial.println(digitalRead(D6));
@@ -43,27 +46,32 @@ void loop() {
 
   if (digitalRead(D1) == 1 && !isZero1) {
     isZero1 = true;
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A1/0");
+    weight1 = 0;
+    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A1/" + String(weight1));
   }
 
   if (digitalRead(D2) == 1 && !isZero2) {
     isZero2 = true;
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A2/0");
+    weight2 = 0;
+    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A2/" + String(weight2));
   }
 
   if (digitalRead(D6) == 1 && !isZero3) {
     isZero3 = true;
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A3/0");
+    weight3 = 0;
+    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A3/" + String(weight3));
   }
 
   if (digitalRead(D7) == 1 && !isZero4) {
     isZero4 = true;
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A4/0");
+    weight4 = 0;
+    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A4/" + String(weight4));
   }
 
   if (digitalRead(D5) == 1 && !isZero5) {
     isZero5 = true;
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A5/0");
+    weight5 = 0;
+    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A5/" + String(weight5));
   }
 
   WiFiClient client = server.available();
@@ -78,15 +86,15 @@ void loop() {
   // Match the request
   if (request.indexOf("/get_weight") != -1)  {
     digitalWrite(LED_BUILTIN, LOW);
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A1/50.5");
+    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A1/" + String(weight1));
     delay(1000);
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A2/32");
+    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A2/" + String(weight2));
     delay(1000);
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A3/41");
+    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A3/" + String(weight3));
     delay(1000);
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A4/68");
+    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A4/" + String(weight4));
     delay(1000);
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A5/46");
+    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A5/" + String(weight5));
     delay(1000);
     digitalWrite(LED_BUILTIN, HIGH);
     setToInitial();

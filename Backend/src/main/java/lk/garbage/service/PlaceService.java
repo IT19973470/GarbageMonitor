@@ -9,6 +9,7 @@ public interface PlaceService {
     void getShortestPath(String enter);
 
 //    void notifyBinStatus();
+    void calcShortestPath(String enter);
 
     void binStatus(String label, double weight);
 

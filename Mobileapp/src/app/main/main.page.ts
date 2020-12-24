@@ -20,6 +20,7 @@ export class MainPage implements OnInit {
     }
 
     ionViewWillEnter(){
+        // console.log(this.r_service.binInitializer.observers)
         this.r_service.binInitializer.next();
     }
 
