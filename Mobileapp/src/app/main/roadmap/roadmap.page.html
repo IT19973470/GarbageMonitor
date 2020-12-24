@@ -18,9 +18,16 @@
         </div>
         <div class="col-12" style="text-align: center;margin-top: 20px">
             <div style="font-weight: bold;font-size: 25px" *ngFor="let place of binAvailable">
-                <span style="color: #6d3904">{{place.label}}</span>
-                <i *ngIf="place.available" class="fas fa-check" style="margin-left: 10px;color: #0fa851"></i>
-                <i *ngIf="!place.available" class="fas fa-times" style="margin-left: 10px;color: #ff010d"></i>
+                <div class="row">
+                    <div class="col-6" style="text-align: right;padding: 0px">
+                        <span style="color: #6d3904">{{place.label}}</span>
+                        <i class="fas fa-trash-alt" style="margin-left: 10px;color: #6d3904"></i>
+                    </div>
+                    <div class="col-6" style="text-align: left;padding: 0px 0px 0px 15px">
+                        <i *ngIf="place.available" class="fas fa-check" style="margin-left: 10px;color: #0fa851"></i>
+                        <i *ngIf="!place.available" class="fas fa-times" style="margin-left: 10px;color: #ff010d"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
