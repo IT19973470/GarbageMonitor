@@ -18,14 +18,18 @@
         <div class="col-12" style="text-align: center;margin-top: 30px;font-size: 30px;color: #d26e06">
             Online ({{totalBins}} of 5)
         </div>
-        <div class="col-12" style="text-align: center;margin-top: 20px">
-            <div style="font-weight: bold;font-size: 25px" *ngFor="let place of binAvailable">
+        <div class="col-12" style="text-align: center;margin-top: 30px">
+            <div style="font-weight: bold;font-size: 22px" *ngFor="let place of binAvailable">
                 <div class="row">
-                    <div class="col-6" style="text-align: right;padding: 0px">
-                        <span style="color: #6d3904">{{place.label}}</span>
-                        <i class="fas fa-trash-alt" style="margin-left: 10px;color: #6d3904"></i>
+                    <div class="col-5" style="text-align: right;padding: 0px">
+                        <span style="color: #7a4005">{{place.label}}</span>
+                        <i class="fas fa-trash-alt" style="margin-left: 10px;color: #4f2903"></i>
+                        <i class="fas fa-caret-right" style="margin-left: 10px;color: #4f2903"></i>
                     </div>
-                    <div class="col-6" style="text-align: left;padding: 0px 0px 0px 15px">
+                    <div class="col-3" style="text-align: left;padding: 0px 0px 0px 5px">
+                        <span style="color: #7a4005"> {{place.weight}}</span>
+                    </div>
+                    <div class="col-3" style="text-align: left;padding: 0px 0px 0px 0px">
                         <i *ngIf="place.available" class="fas fa-check" style="margin-left: 10px;color: #0fa851"></i>
                         <i *ngIf="!place.available" class="fas fa-times" style="margin-left: 10px;color: #ff010d"></i>
                     </div>

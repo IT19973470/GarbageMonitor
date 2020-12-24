@@ -28,7 +28,7 @@ public class PlaceServiceImpl implements PlaceService {
     private static final double MAX_WEIGHT = 90;
     private List<PlaceDistanceDTO> placeDistanceDTOS = new ArrayList<>();
     private List<SensorDTO> sensors = new ArrayList<>();
-//    private static final int BINS_COUNT = 5;
+    //    private static final int BINS_COUNT = 5;
 //    private int ongoingBinsCount = 0;
     private static final double MIN_WEIGHT = 10;
 
@@ -67,6 +67,11 @@ public class PlaceServiceImpl implements PlaceService {
         //==============================================================================================================
 
         //Filter only labels of sensors
+
+        if (sensors.size() == 0) {
+            return;
+        }
+
         List<String> sensorLabels = new ArrayList<>();
         for (SensorDTO sensor : sensors) {
             sensorLabels.add(sensor.getLabel());
@@ -270,7 +275,7 @@ public class PlaceServiceImpl implements PlaceService {
     @Override
     public void binStatus(String label, double weight) {
         System.out.println(label);
-        webSocket.convertAndSend("/topic/greetings3", label);
+        webSocket.convertAndSend("/topic/greetings3", label + "/" + weight / MAX_WEIGHT * 100);
         if (weight == 0) {
             for (int i = 0; i < placeDistanceDTOS.size(); i++) {
                 if (placeDistanceDTOS.get(i).getPlaceFrom().getLabel().equals(label)) {
@@ -279,15 +284,8 @@ public class PlaceServiceImpl implements PlaceService {
             }
         } else if (weight > 0) {
             if (weight > MIN_WEIGHT) {
-//                ongoingBinsCount++;
                 sensors.add(new SensorDTO(label, weight));
             }
-//            else {
-//                ongoingBinsCount++;
-//            }
-//            if (ongoingBinsCount == BINS_COUNT) {
-//                calcShortestPath("No");
-//            }
         }
 
 //        System.out.println(placeDistanceDTOS);

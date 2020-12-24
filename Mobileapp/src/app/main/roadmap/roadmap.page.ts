@@ -128,12 +128,14 @@ export class RoadmapPage implements OnInit {
     setBinAvailable(placeDto) {
         if (this.totalBins < this.binAvailable.length) {
             for (let bin of this.binAvailable) {
-                if (bin.label === placeDto) {
+                if (bin.label === placeDto.split('/')[0]) {
+                    bin.weight = '(' + parseFloat(placeDto.split('/')[1]).toFixed(1) + '%)';
                     bin.available = true;
-                }
-                if (bin.label === placeDto && bin.available) {
                     this.totalBins++;
                 }
+                // if (bin.label.split('(')[0].trim() === placeDto.split('(')[0].trim() && bin.available) {
+                //     this.totalBins++;
+                // }
             }
         }
     }
@@ -146,22 +148,27 @@ export class RoadmapPage implements OnInit {
         return [
             {
                 label: "A1",
+                weight: '(0%)',
                 available: false
             },
             {
                 label: "A2",
+                weight: '(0%)',
                 available: false
             },
             {
                 label: "A3",
+                weight: '(0%)',
                 available: false
             },
             {
                 label: "A4",
+                weight: '(0%)',
                 available: false
             },
             {
                 label: "A5",
+                weight: '(0%)',
                 available: false
             }
         ]
