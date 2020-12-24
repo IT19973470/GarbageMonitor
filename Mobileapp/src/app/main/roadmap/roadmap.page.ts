@@ -70,8 +70,8 @@ export class RoadmapPage implements OnInit {
 
     initPlaces() {
         this.map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: {lat: 6.053519, lng: 80.220978},
+            zoom: 12,
+            center: {lat: 6.911101405132038, lng: 79.88590235478675},
             // mapTypeId: 'terrain'
         });
         console.log(3)
@@ -99,14 +99,21 @@ export class RoadmapPage implements OnInit {
     setBins(placeDto) {
         this.totalTrip = placeDto.distance;
         for (let i = 0; i < placeDto['placeDistances'].length; i++) {
-            // this.marker1 = new google.maps.Marker({
-            //     position: new google.maps.LatLng(placeDtos[i].latitude, placeDtos[i].longitude),
-            //     map: this.map,
-            //     label: placeDtos[i].label
-            // });
+            this.marker1 = new google.maps.Marker({
+                position: new google.maps.LatLng(placeDto['placeDistances'][i].placeFrom.latitude, placeDto['placeDistances'][i].placeFrom.longitude),
+                map: this.map,
+                label: placeDto['placeDistances'][i].placeFrom.label
+            });
 
             this.places.push(placeDto['placeDistances'][i])
             if (i === placeDto['placeDistances'].length - 1) {
+
+                this.marker1 = new google.maps.Marker({
+                    position: new google.maps.LatLng(placeDto['placeDistances'][i].placeTo.latitude, placeDto['placeDistances'][i].placeTo.longitude),
+                    map: this.map,
+                    label: placeDto['placeDistances'][i].placeTo.label
+                });
+
                 this.places.push({
                     placeFrom: {
                         label: placeDto['placeDistances'][i].placeTo.label,
@@ -133,9 +140,6 @@ export class RoadmapPage implements OnInit {
                     bin.available = true;
                     this.totalBins++;
                 }
-                // if (bin.label.split('(')[0].trim() === placeDto.split('(')[0].trim() && bin.available) {
-                //     this.totalBins++;
-                // }
             }
         }
     }
