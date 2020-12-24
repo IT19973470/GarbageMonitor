@@ -11,7 +11,9 @@
 
     <div class="row" *ngIf="places.length==0">
         <div class="col-12" style="text-align: center;font-weight: bold;font-size: 18px;margin-top: 40px">
-            <button class="btn btn-warning" (click)="proceedShortestPath()">Proceed</button>
+            <button class="btn btn-warning" (click)="proceedShortestPath()">
+                Proceed <i class="fas fa-caret-right" *ngIf="totalBins===5"></i>
+            </button>
         </div>
         <div class="col-12" style="text-align: center;margin-top: 30px;font-size: 30px;color: #d26e06">
             Online ({{totalBins}} of 5)
