@@ -8,16 +8,16 @@
       </div>
       <div class="col-12" style="margin-top: 60px">
         <input type="text" class="form-control" placeholder="NIC"
-               [(ngModel)]="member.nic" #nic="ngModel" appEmailOrNicValidator name="nic" required
+               [(ngModel)]="member.nic" #nic="ngModel" name="nic" required
                [ngStyle]="{'border-color':logged?'#c0ccda':'#b60f06'}">
         <div *ngIf="(nic.touched || loginForm.submitted) && nic.errors?.required"
              style="margin-left: 5px;color: #b60f06;font-size: 11px">
           NIC is required
         </div>
-        <div *ngIf="(nic.dirty) && nic.errors?.emailOrNicInvalid"
-             style="margin-left: 5px;color: #b60f06;font-size: 11px">
-          Invalid NIC
-        </div>
+        <!--<div *ngIf="(nic.dirty) && nic.errors?.emailOrNicInvalid"-->
+             <!--style="margin-left: 5px;color: #b60f06;font-size: 11px">-->
+          <!--Invalid NIC-->
+        <!--</div>-->
         <div style="margin-left: 5px;color: #b60f06;font-size: 11px">
           {{userNameMsg}}
         </div>

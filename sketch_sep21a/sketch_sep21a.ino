@@ -34,7 +34,12 @@ void setup() {
 }
 
 void loop() {
-  //  server.handleClient();
+//    server.handleClient();
+  Serial.println(digitalRead(D1));
+  Serial.println(digitalRead(D2));
+  Serial.println(digitalRead(D6));
+  Serial.println(digitalRead(D7));
+  Serial.println(digitalRead(D5));
 
   if (digitalRead(D1) == 1 && !isZero1) {
     isZero1 = true;
@@ -79,9 +84,9 @@ void loop() {
     delay(1000);
     sendRequest("http://192.168.1.4:8080/api/place/binSignal/A3/41");
     delay(1000);
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A4/46");
+    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A4/68");
     delay(1000);
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A5/68");
+    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A5/46");
     delay(1000);
     digitalWrite(LED_BUILTIN, HIGH);
     setToInitial();

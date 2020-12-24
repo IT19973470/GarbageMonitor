@@ -25,27 +25,30 @@ public class PlaceServiceImpl implements PlaceService {
     @Autowired
     private SimpMessagingTemplate webSocket;
 
-    private static double MAX_WEIGHT = 70;
+    private static final double MAX_WEIGHT = 70;
     private List<PlaceDistanceDTO> placeDistanceDTOS = new ArrayList<>();
     private List<SensorDTO> sensors = new ArrayList<>();
-    private static int BINS_COUNT = 5;
+    private static final int BINS_COUNT = 5;
     private int ongoingBinsCount = 0;
-    private static double MIN_WEIGHT = 10;
+    private static final double MIN_WEIGHT = 10;
+
+    private static final String[] IP_ADDRESSES = {"192.168.1.8"};
 
     @Override
     public void getShortestPath(String enter) {
         sensors = new ArrayList<>();
         ongoingBinsCount = 0;
-        System.out.println("00");
+        System.out.println("Sent");
 
         //Notify nodes
         try {
-            URL url = new URL("http://192.168.1.8/get_weight");
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
+            for (String ipAddress : IP_ADDRESSES) {
+                URL url = new URL("http://" + ipAddress + "/get_weight");
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
 
-            connection.getResponseCode();
-
+                connection.getResponseCode();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

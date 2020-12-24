@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {MenuController} from "@ionic/angular";
+import {environment} from "../../environments/environment";
+import {HttpClient} from "@angular/common/http";
+import {RoadmapService} from "./roadmap/roadmap.service";
 
 @Component({
     selector: 'app-main',
@@ -9,15 +12,15 @@ import {MenuController} from "@ionic/angular";
 })
 export class MainPage implements OnInit {
 
-    constructor(private router: Router, private menu: MenuController) {
+    constructor(private router: Router, private menu: MenuController,private http: HttpClient,private r_service:RoadmapService) {
     }
 
     ngOnInit() {
 
     }
 
-    ionViewDidEnter(){
-
+    ionViewWillEnter(){
+        this.r_service.binInitializer.next();
     }
 
     logout() {

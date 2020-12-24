@@ -15,7 +15,7 @@
         </div>
         <div class="col-12" style="text-align: center;margin-top: 20px">
             <div style="color: #ff8607;font-weight: bold;font-size: 25px" *ngFor="let place of binAvailable">
-                <span>{{place}}</span> <i class="fas fa-check" style="margin-left: 20px"></i>
+                <span style="color: #c66806">{{place}}</span> <i class="fas fa-check" style="margin-left: 20px"></i>
             </div>
         </div>
     </div>
@@ -48,8 +48,8 @@
                         <i *ngIf="(place.placeFrom.binEmpty===0 || place.placeFrom.binEmpty===1)"
                            class="fas fa-trash-alt"
                            style="font-size: 23px"
-                           [ngStyle]="{'color':place.placeFrom.weight<50?'#ff8e00':
-                           place.placeFrom.weight<85?'#ff5a03':'#ff010d'}"></i>
+                           [ngStyle]="{'color':place.placeFrom.weight<50?'#ffab05':
+                           place.placeFrom.weight<85?'#ff5a03':'#dd010a'}"></i>
 
                         <i *ngIf="place.placeFrom.binEmpty===2"
                            class="fas fa-check"
@@ -57,8 +57,8 @@
                         <i *ngIf="(place.placeFrom.binEmpty===0 || place.placeFrom.binEmpty===1)"
                            class="fas fa-exclamation-triangle"
                            style="font-size: 20px;margin-left: 8px"
-                           [ngStyle]="{'color':place.placeFrom.weight<50?'#ff8e00':
-                           place.placeFrom.weight<85?'#ff5a03':'#ff010d'}"></i>
+                           [ngStyle]="{'color':place.placeFrom.weight<50?'#ffab05':
+                           place.placeFrom.weight<85?'#ff5a03':'#dd010a'}"></i>
 
                     </div>
                 </div>

@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {LoginDto} from "./loginDto";
 import {LoginService} from "./login.service";
 import {Router} from "@angular/router";
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginPage implements OnInit {
     member = new LoginDto();
     logged = true;
 
-    constructor(private loginService: LoginService, private router: Router) {
+    constructor(private loginService: LoginService, private router: Router,private navController:NavController) {
     }
 
     ngOnInit() {
@@ -52,6 +53,7 @@ export class LoginPage implements OnInit {
         //         this.logged = false;
         //     }
         // });
-        this.router.navigate(['/main/roadmap']);
+        this.router.navigate(['/main']);
+        // this.navController.navigateBack(['/main/roadmap']);
     }
 }

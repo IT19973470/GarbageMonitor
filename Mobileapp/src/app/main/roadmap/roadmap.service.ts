@@ -14,6 +14,7 @@ export class RoadmapService {
     binUpdate = new Subject();
     binsSet = new Subject();
     binAvailable = new Subject();
+    binInitializer = new Subject();
 
     constructor() {
         this.initSocket()

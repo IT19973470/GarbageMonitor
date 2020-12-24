@@ -25,22 +25,25 @@ export class RoadmapPage implements OnInit {
     // placeLatLong: Array<number> = new Array<number>();
     // @Output() googleMapRoutesOut: EventEmitter<any> = new EventEmitter();
     places = Array();
-    binAvailable=Array();
+    binAvailable = Array();
     totalTrip = 0;
-    // binStatus;
-    // socket;
-    // stompClient;
 
     constructor(
         private http: HttpClient,
         private r_service: RoadmapService
     ) {
+        this.r_service.binInitializer.subscribe(()=>{
+            this.places = Array();
+            this.binAvailable = Array();
+            this.ionView();
+        })
+
         this.r_service.binUpdate.subscribe((binStatus) => {
-            // this.binStatus = binStatus;
             this.changeBinStatus(binStatus);
         })
 
         this.r_service.binsSet.subscribe((placeDto) => {
+            this.places = Array();
             this.setBins(placeDto);
         })
 
@@ -53,28 +56,27 @@ export class RoadmapPage implements OnInit {
 
     }
 
-    ionViewDidEnter() {
-        // this.map = new google.maps.Map(document.getElementById('map'), {
-        //     zoom: 15,
-        //     center: {lat: 6.053519, lng: 80.220978},
-        //     // mapTypeId: 'terrain'
-        // });
+    ionView() {
+        this.map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: {lat: 6.053519, lng: 80.220978},
+            // mapTypeId: 'terrain'
+        });
 
-        this.http.get<any>(environment.backend_url + "/api/place/shortestPath").subscribe((placeDto) => {
-            // console.log(placeDto)
-
-            // this.places[1].placeFrom.binEmpty = 2;
-            // this.places[2].placeFrom.binEmpty = 1;
-            // this.changeRouteOnMap();
-            // this.mapsAPILoader.load().then(() => {
-            //
-            //     }
-            // );
-        })
+        this.http.get<any>(environment.backend_url + "/api/place/shortestPath").subscribe();
+        //     // console.log(placeDto)
+        //
+        //     // this.places[1].placeFrom.binEmpty = 2;
+        //     // this.places[2].placeFrom.binEmpty = 1;
+        //     // this.changeRouteOnMap();
+        //     // this.mapsAPILoader.load().then(() => {
+        //     //
+        //     //     }12
+        //     // );
+        // })
     }
 
     changeBinStatus(binStatus) {
-        // console.log(JSON.parse(binStatus))
         for (let i = 0; i < this.places.length; i++) {
             if (this.places[i].placeFrom.label === JSON.parse(binStatus).placeFrom.label) {
                 this.places[i].placeFrom.binEmpty = 2;
@@ -85,7 +87,7 @@ export class RoadmapPage implements OnInit {
         }
     }
 
-    setBins(placeDto){
+    setBins(placeDto) {
         this.totalTrip = placeDto.distance;
         for (let i = 0; i < placeDto['placeDistances'].length; i++) {
             // this.marker1 = new google.maps.Marker({
@@ -114,7 +116,7 @@ export class RoadmapPage implements OnInit {
         this.places[0].placeFrom.binEmpty = 1;
     }
 
-    setBinAvailable(placeDto){
+    setBinAvailable(placeDto) {
         this.binAvailable.push(placeDto)
     }
 }
