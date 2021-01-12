@@ -4,17 +4,15 @@
 
 const char* ssid = "TP-Link_AP_7E94";
 const char* password = "tplink1234321";
-float weight1 = 50.5;
-float weight2 = 32;
-float weight3 = 41;
-float weight4 = 78;
-float weight5 = 46;
 
-boolean isZero1 = false;
-boolean isZero2 = false;
-boolean isZero3 = false;
-boolean isZero4 = false;
-boolean isZero5 = false;
+const char* label = "A2";
+//float weight = 50.5;
+float weight = 32;
+//float weight = 41;
+//float weight = 78;
+//float weight = 46;
+
+boolean isZero = false;
 
 WiFiServer server(80);
 
@@ -25,12 +23,14 @@ void setup() {
     delay(500);
   }
   pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(2000);
-  digitalWrite(LED_BUILTIN, HIGH);
+  pinMode(D0, OUTPUT);
+  digitalWrite(D0, LOW);
+  //  delay(2000);
+  //  digitalWrite(LED_BUILTIN, HIGH);
   server.begin();
   Serial.println("Wifi OK");
   Serial.println(WiFi.localIP());
+  Serial.println(WiFi.macAddress());
 
   setToInitial();
 
@@ -39,39 +39,11 @@ void setup() {
 void loop() {
   //    server.handleClient();
   Serial.println(digitalRead(D1));
-  Serial.println(digitalRead(D2));
-  Serial.println(digitalRead(D6));
-  Serial.println(digitalRead(D7));
-  Serial.println(digitalRead(D5));
 
-  if (digitalRead(D1) == 1 && !isZero1) {
-    isZero1 = true;
-    weight1 = 0;
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A1/" + String(weight1));
-  }
-
-  if (digitalRead(D2) == 1 && !isZero2) {
-    isZero2 = true;
-    weight2 = 0;
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A2/" + String(weight2));
-  }
-
-  if (digitalRead(D6) == 1 && !isZero3) {
-    isZero3 = true;
-    weight3 = 0;
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A3/" + String(weight3));
-  }
-
-  if (digitalRead(D7) == 1 && !isZero4) {
-    isZero4 = true;
-    weight4 = 0;
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A4/" + String(weight4));
-  }
-
-  if (digitalRead(D5) == 1 && !isZero5) {
-    isZero5 = true;
-    weight5 = 0;
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A5/" + String(weight5));
+  if (digitalRead(D1) == 1 && !isZero) {
+    isZero = true;
+    weight = 0;
+    sendRequest("http://192.168.1.4:8080/api/place/binSignal/" + String(label) + "/" + String(weight));
   }
 
   WiFiClient client = server.available();
@@ -86,16 +58,7 @@ void loop() {
   // Match the request
   if (request.indexOf("/get_weight") != -1)  {
     digitalWrite(LED_BUILTIN, LOW);
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A1/" + String(weight1));
-    delay(1000);
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A2/" + String(weight2));
-    delay(1000);
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A3/" + String(weight3));
-    delay(1000);
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A4/" + String(weight4));
-    delay(1000);
-    sendRequest("http://192.168.1.4:8080/api/place/binSignal/A5/" + String(weight5));
-    delay(1000);
+    sendRequest("http://192.168.1.4:8080/api/place/binSignal/" + String(label) + "/" + String(weight));
     digitalWrite(LED_BUILTIN, HIGH);
     setToInitial();
   }
@@ -106,31 +69,12 @@ void loop() {
 }
 
 void setToInitial() {
-  isZero1 = false;
-  isZero2 = false;
-  isZero3 = false;
-  isZero4 = false;
-  isZero5 = false;
+  isZero = false;
 
   pinMode(D1, OUTPUT);
   digitalWrite(D1, LOW);
   pinMode(D1, INPUT);
 
-  pinMode(D2, OUTPUT);
-  digitalWrite(D2, LOW);
-  pinMode(D2, INPUT);
-
-  pinMode(D6, OUTPUT);
-  digitalWrite(D6, LOW);
-  pinMode(D6, INPUT);
-
-  pinMode(D7, OUTPUT);
-  digitalWrite(D7, LOW);
-  pinMode(D7, INPUT);
-
-  pinMode(D5, OUTPUT);
-  digitalWrite(D5, LOW);
-  pinMode(D5, INPUT);
 }
 
 void sendRequest(String url) {

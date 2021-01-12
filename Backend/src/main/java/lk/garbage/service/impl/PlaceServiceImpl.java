@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
@@ -28,16 +26,13 @@ public class PlaceServiceImpl implements PlaceService {
     private static final double MAX_WEIGHT = 90;
     private List<PlaceDistanceDTO> placeDistanceDTOS = new ArrayList<>();
     private List<SensorDTO> sensors = new ArrayList<>();
-    //    private static final int BINS_COUNT = 5;
-//    private int ongoingBinsCount = 0;
     private static final double MIN_WEIGHT = 10;
 
-    private static final String[] IP_ADDRESSES = {"192.168.1.8"};
+    private static final String[] IP_ADDRESSES = {"192.168.1.21", "192.168.1.22"};
 
     @Override
     public void getShortestPath(String enter) {
         sensors = new ArrayList<>();
-//        ongoingBinsCount = 0;
         System.out.println("Sent");
 
         //Notify nodes
@@ -56,15 +51,6 @@ public class PlaceServiceImpl implements PlaceService {
 
     @Override
     public void calcShortestPath(String enter) {
-
-//        sensors = new ArrayList<>();
-//        sensors.add(new SensorDTO("A1", 50.5));
-//        sensors.add(new SensorDTO("A2", 68));
-//        sensors.add(new SensorDTO("A3", 41));
-//        sensors.add(new SensorDTO("A4", 32));
-//        sensors.add(new SensorDTO("A5", 46));
-
-        //==============================================================================================================
 
         //Filter only labels of sensors
 
@@ -166,7 +152,6 @@ public class PlaceServiceImpl implements PlaceService {
         }
         bestPathDTO.setPlaceDistances(placeDistanceDTOS);
         bestPathDTO.setDistance(lowestPath.distance);
-//        this.placeDistanceDTOS = new ArrayList<>();
         this.placeDistanceDTOS.addAll(placeDistanceDTOS);
 
         PlaceDistanceDTO placeDistanceDTO = new PlaceDistanceDTO();
@@ -175,7 +160,6 @@ public class PlaceServiceImpl implements PlaceService {
         this.placeDistanceDTOS.add(placeDistanceDTO);
 
         webSocket.convertAndSend("/topic/greetings2", bestPathDTO);
-//        return bestPathDTO;
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -287,9 +271,6 @@ public class PlaceServiceImpl implements PlaceService {
                 sensors.add(new SensorDTO(label, weight));
             }
         }
-
-//        System.out.println(placeDistanceDTOS);
-//        webSocket.convertAndSend("/topic/greetings1", placeDistanceDTO);
     }
 
 }
