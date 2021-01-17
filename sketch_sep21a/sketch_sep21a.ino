@@ -2,6 +2,8 @@
 #include <ESP8266HTTPClient.h>
 #include <ESP8266WebServer.h>
 
+//const char* ssid = "iDialog 4G - 2";
+//const char* password = "149homewifidialog";
 const char* ssid = "TP-Link_AP_7E94";
 const char* password = "tplink1234321";
 
@@ -24,23 +26,22 @@ void setup() {
   }
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(D0, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);
+
   digitalWrite(D0, LOW);
-  //  delay(2000);
-  //  digitalWrite(LED_BUILTIN, HIGH);
   server.begin();
   Serial.println("Wifi OK");
   Serial.println(WiFi.localIP());
   Serial.println(WiFi.macAddress());
 
   setToInitial();
-
 }
 
 void loop() {
   //    server.handleClient();
-  Serial.println(digitalRead(D1));
+  Serial.println(digitalRead(D2));
 
-  if (digitalRead(D1) == 1 && !isZero) {
+  if (digitalRead(D2) == 1 && !isZero) {
     isZero = true;
     weight = 0;
     sendRequest("http://192.168.1.4:8080/api/place/binSignal/" + String(label) + "/" + String(weight));
@@ -70,10 +71,9 @@ void loop() {
 
 void setToInitial() {
   isZero = false;
-
-  pinMode(D1, OUTPUT);
-  digitalWrite(D1, LOW);
-  pinMode(D1, INPUT);
+  pinMode(D2, OUTPUT);
+  digitalWrite(D2, LOW);
+  pinMode(D2, INPUT);
 
 }
 
