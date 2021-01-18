@@ -1,11 +1,12 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 #include <ESP8266WebServer.h>
+#include "HX711.h"
 
-//const char* ssid = "iDialog 4G - 2";
-//const char* password = "149homewifidialog";
-const char* ssid = "TP-Link_AP_7E94";
-const char* password = "tplink1234321";
+const char* ssid = "iDialog 4G - 2";
+const char* password = "149homewifidialog";
+//const char* ssid = "TP-Link_AP_7E94";
+//const char* password = "tplink1234321";
 
 const char* label = "A2";
 //float weight = 50.5;
@@ -15,7 +16,7 @@ float weight = 32;
 //float weight = 46;
 
 boolean isZero = false;
-
+//HX711 scale;
 WiFiServer server(80);
 
 void setup() {
@@ -33,6 +34,10 @@ void setup() {
   Serial.println("Wifi OK");
   Serial.println(WiFi.localIP());
   Serial.println(WiFi.macAddress());
+
+//  scale.begin(D6, D7);
+//  scale.set_scale(-7050); //This value is obtained by using the SparkFun_HX711_Calibration sketch
+//  scale.tare(); //Assuming there is no weight on the scale at start up, reset the scale to 0
 
   setToInitial();
 }
@@ -59,6 +64,7 @@ void loop() {
   // Match the request
   if (request.indexOf("/get_weight") != -1)  {
     digitalWrite(LED_BUILTIN, LOW);
+//    weight = scale.get_units();
     sendRequest("http://192.168.1.4:8080/api/place/binSignal/" + String(label) + "/" + String(weight));
     digitalWrite(LED_BUILTIN, HIGH);
     setToInitial();
